@@ -1,0 +1,16 @@
+# SpinozaOS Docs - Nixpacks Configuration
+[phases.setup]
+nixPkgs = ["nodejs_20", "pnpm"]
+
+[phases.install]
+cmds = ["corepack enable", "pnpm install"]
+
+[phases.build]
+cmds = [
+  "cd packages/tokens && pnpm build",
+  "cd ../motion && pnpm build",
+  "cd ../../apps/docs && pnpm build"
+]
+
+[start]
+cmd = "cd apps/docs && pnpm preview --host 0.0.0.0 --port 3000"
