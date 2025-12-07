@@ -1,0 +1,121 @@
+---
+title: Tooltip
+description: Hover tooltip component with positioning
+---
+
+## Tooltip Component
+
+A tooltip component that displays additional information on hover.
+
+```tsx
+import { Tooltip } from '@spinozaos/react';
+
+<Tooltip content="This is a tooltip">
+  <Button>Hover me</Button>
+</Tooltip>
+```
+
+## Positions
+
+| Position | Description |
+|----------|-------------|
+| `top` | Above the element |
+| `bottom` | Below the element |
+| `left` | Left of the element |
+| `right` | Right of the element |
+
+## Variants
+
+| Variant | Description |
+|---------|-------------|
+| `default` | Dark gray background |
+| `dark` | Pure black background |
+| `light` | White background, dark text |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `content` | `ReactNode` | - | Tooltip content |
+| `position` | `string` | `'top'` | Tooltip position |
+| `variant` | `string` | `'default'` | Visual style |
+| `delay` | `number` | `200` | Show delay in ms |
+| `offset` | `number` | `8` | Distance from trigger |
+
+## Examples
+
+```tsx
+// Basic tooltip
+<Tooltip content="This is a tooltip">
+  <Button>Hover me</Button>
+</Tooltip>
+
+// Different positions
+<Tooltip content="Top tooltip" position="top">
+  <Button>Top</Button>
+</Tooltip>
+
+<Tooltip content="Bottom tooltip" position="bottom">
+  <Button>Bottom</Button>
+</Tooltip>
+
+<Tooltip content="Left tooltip" position="left">
+  <Button>Left</Button>
+</Tooltip>
+
+<Tooltip content="Right tooltip" position="right">
+  <Button>Right</Button>
+</Tooltip>
+
+// Custom delay
+<Tooltip content="Slow tooltip" delay={500}>
+  <Button>Slow (500ms)</Button>
+</Tooltip>
+
+<Tooltip content="Fast tooltip" delay={100}>
+  <Button>Fast (100ms)</Button>
+</Tooltip>
+
+// On icons
+<Tooltip content="Settings">
+  <button className="p-2 rounded hover:bg-white/5">
+    <SettingsIcon />
+  </button>
+</Tooltip>
+
+// With keyboard shortcut
+<Tooltip
+  content={
+    <span className="flex items-center gap-2">
+      Save <kbd className="px-1 rounded bg-white/10">⌘S</kbd>
+    </span>
+  }
+>
+  <Button>Save</Button>
+</Tooltip>
+
+// Rich content
+<Tooltip
+  content={
+    <div className="text-left">
+      <p className="font-medium">Pro Feature</p>
+      <p className="text-neutral-400">Upgrade to unlock</p>
+    </div>
+  }
+>
+  <Badge variant="oracle">PRO</Badge>
+</Tooltip>
+```
+
+## Accessibility
+
+- Tooltip appears on hover and focus
+- Uses `role="tooltip"` for screen readers
+- Keyboard accessible via focus
+
+## Motion
+
+The tooltip includes smooth animations:
+- **Enter**: Fade in with slight position offset
+- **Exit**: Fade out
+- **Transition**: Tight spring physics

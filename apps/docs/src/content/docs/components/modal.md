@@ -1,0 +1,127 @@
+---
+title: Modal
+description: Dialog modal component with backdrop and animations
+---
+
+## Modal Component
+
+A dialog modal component with backdrop blur, keyboard support, and smooth animations.
+
+```tsx
+import { Modal, ModalFooter } from '@spinozaos/react';
+
+<Modal
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  title="Confirm Action"
+>
+  <p>Are you sure you want to proceed?</p>
+  <ModalFooter>
+    <Button variant="ghost" onClick={() => setIsOpen(false)}>Cancel</Button>
+    <Button variant="primary">Confirm</Button>
+  </ModalFooter>
+</Modal>
+```
+
+## Sizes
+
+| Size | Max Width |
+|------|-----------|
+| `sm` | 384px |
+| `md` | 448px |
+| `lg` | 512px |
+| `xl` | 576px |
+| `full` | 896px |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `isOpen` | `boolean` | - | Control modal visibility |
+| `onClose` | `() => void` | - | Close callback |
+| `title` | `string` | - | Modal title |
+| `description` | `string` | - | Description below title |
+| `size` | `string` | `'md'` | Modal width |
+| `showCloseButton` | `boolean` | `true` | Show X button |
+| `closeOnOverlayClick` | `boolean` | `true` | Close on backdrop click |
+| `closeOnEscape` | `boolean` | `true` | Close on Escape key |
+
+## Sub-components
+
+| Component | Description |
+|-----------|-------------|
+| `ModalHeader` | Header section |
+| `ModalBody` | Body content |
+| `ModalFooter` | Footer with actions |
+
+## Examples
+
+```tsx
+// Basic modal
+const [isOpen, setIsOpen] = useState(false);
+
+<Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+
+<Modal
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  title="Modal Title"
+  description="This is a description."
+>
+  <p>Modal content goes here.</p>
+  <ModalFooter>
+    <Button variant="ghost" onClick={() => setIsOpen(false)}>Cancel</Button>
+    <Button variant="primary">Confirm</Button>
+  </ModalFooter>
+</Modal>
+
+// Large modal
+<Modal
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  title="Detailed Information"
+  size="lg"
+>
+  <p>Longer content...</p>
+</Modal>
+
+// Form modal
+<Modal
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  title="Create Prediction"
+  description="Enter your AGI milestone prediction."
+>
+  <div className="space-y-4">
+    <Input label="Milestone Title" placeholder="..." />
+    <Input label="Target Date" type="date" />
+    <Input label="Confidence (%)" type="number" />
+  </div>
+  <ModalFooter>
+    <Button variant="ghost" onClick={() => setIsOpen(false)}>Cancel</Button>
+    <Button variant="primary">Submit</Button>
+  </ModalFooter>
+</Modal>
+
+// Prevent overlay close
+<Modal
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  title="Important"
+  closeOnOverlayClick={false}
+>
+  <p>Must use button or Escape to close.</p>
+</Modal>
+```
+
+## Keyboard Support
+
+- **Escape**: Close modal (when `closeOnEscape` is true)
+- **Tab**: Focus trap within modal
+
+## Motion
+
+The modal includes smooth animations:
+- **Overlay**: Fade in/out with blur
+- **Content**: Scale and slide animation
+- **Transition**: Soft spring physics
