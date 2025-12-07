@@ -1,0 +1,62 @@
+---
+title: Button
+description: Interactive button component with motion
+---
+
+## Button Component
+
+A button component with built-in motion and multiple variants.
+
+```tsx
+import { Button } from '@spinozaos/react';
+
+<Button variant="primary">Click me</Button>
+```
+
+## Variants
+
+| Variant | Description |
+|---------|-------------|
+| `primary` | Gold background, dark text |
+| `secondary` | Transparent with border |
+| `ghost` | No background, text only |
+| `oracle` | Purple premium variant |
+
+## Sizes
+
+| Size | Height |
+|------|--------|
+| `sm` | 36px |
+| `md` | 40px |
+| `lg` | 48px |
+| `icon` | 40x40px |
+
+## Examples
+
+```tsx
+// Primary button
+<Button variant="primary">Get Started</Button>
+
+// Secondary button
+<Button variant="secondary">Learn More</Button>
+
+// Ghost button
+<Button variant="ghost">Cancel</Button>
+
+// Oracle premium
+<Button variant="oracle">Upgrade to Oracle</Button>
+
+// Different sizes
+<Button size="sm">Small</Button>
+<Button size="lg">Large</Button>
+
+// Disabled state
+<Button disabled>Disabled</Button>
+```
+
+## Motion
+
+The button includes built-in micro-interactions:
+- **Hover**: Slight scale increase
+- **Tap**: Scale down feedback
+- **Transition**: Tight spring physics

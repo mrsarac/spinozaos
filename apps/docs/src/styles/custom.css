@@ -1,0 +1,40 @@
+/* SpinozaOS Documentation Theme */
+:root {
+  --sl-color-accent-low: #020617;
+  --sl-color-accent: #fbbf24;
+  --sl-color-accent-high: #d97706;
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: #f1f5f9;
+  --sl-color-gray-2: #e2e8f0;
+  --sl-color-gray-3: #cbd5e1;
+  --sl-color-gray-4: #94a3b8;
+  --sl-color-gray-5: #64748b;
+  --sl-color-gray-6: #475569;
+  --sl-color-black: #020617;
+}
+
+:root[data-theme='dark'] {
+  --sl-color-bg: #020617;
+  --sl-color-bg-sidebar: #0f172a;
+  --sl-color-bg-nav: #020617;
+}
+
+/* Prophetic Gold accent */
+.sl-markdown-content a {
+  color: var(--sl-color-accent);
+}
+
+.sl-markdown-content a:hover {
+  color: var(--sl-color-accent-high);
+}
+
+/* Code block styling */
+.sl-markdown-content pre {
+  background: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Sidebar accent */
+nav.sidebar a[aria-current="page"] {
+  border-color: var(--sl-color-accent);
+}
