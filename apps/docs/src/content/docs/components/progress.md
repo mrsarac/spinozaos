@@ -1,0 +1,168 @@
+---
+title: Progress & Loading
+description: Progress bar, spinner, and loading state components
+---
+
+## Overview
+
+SpinozaOS provides multiple loading and progress indicators:
+- `Progress` - Animated progress bar
+- `Spinner` - Rotating loading indicator
+- `LoadingDots` - Pulsing dots animation
+- `Skeleton` - Content placeholder
+
+## Progress Bar
+
+```tsx
+import { Progress } from '@spinozaos/react';
+
+<Progress value={60} />
+```
+
+### Variants
+
+| Variant | Description |
+|---------|-------------|
+| `default` | Gold progress bar |
+| `oracle` | Purple progress bar |
+| `success` | Green progress bar |
+| `error` | Red progress bar |
+| `gradient` | Gold to purple gradient |
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | `0` | Current value |
+| `max` | `number` | `100` | Maximum value |
+| `label` | `string` | - | Label text |
+| `showValue` | `boolean` | `false` | Show percentage |
+| `indeterminate` | `boolean` | `false` | Infinite loading |
+| `animated` | `boolean` | `true` | Animate on mount |
+
+### Examples
+
+```tsx
+// Basic progress
+<Progress value={60} />
+
+// With label and value
+<Progress value={75} label="Upload progress" showValue />
+
+// Indeterminate
+<Progress indeterminate label="Loading..." />
+
+// Variants
+<Progress value={60} variant="success" />
+<Progress value={60} variant="gradient" />
+```
+
+## Spinner
+
+```tsx
+import { Spinner } from '@spinozaos/react';
+
+<Spinner />
+```
+
+### Variants
+
+| Variant | Description |
+|---------|-------------|
+| `default` | Gold spinner |
+| `oracle` | Purple spinner |
+| `white` | White spinner |
+| `success` | Green spinner |
+
+### Sizes
+
+| Size | Dimensions |
+|------|------------|
+| `sm` | 16x16px |
+| `md` | 24x24px |
+| `lg` | 32x32px |
+| `xl` | 48x48px |
+
+### Examples
+
+```tsx
+// Basic spinner
+<Spinner />
+
+// With label
+<Spinner label="Loading..." />
+
+// Different sizes
+<Spinner size="sm" />
+<Spinner size="lg" />
+<Spinner size="xl" />
+
+// Variants
+<Spinner variant="oracle" />
+<Spinner variant="white" label="Please wait" />
+```
+
+## Loading Dots
+
+```tsx
+import { LoadingDots } from '@spinozaos/react';
+
+<LoadingDots />
+```
+
+### Examples
+
+```tsx
+// Basic dots
+<LoadingDots />
+
+// Different sizes
+<LoadingDots size="sm" />
+<LoadingDots size="lg" />
+
+// Variants
+<LoadingDots variant="oracle" />
+<LoadingDots variant="white" />
+```
+
+## Skeleton
+
+```tsx
+import { Skeleton } from '@spinozaos/react';
+
+<Skeleton width="100%" height={20} />
+```
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `width` | `string \| number` | - | Skeleton width |
+| `height` | `string \| number` | - | Skeleton height |
+| `rounded` | `string` | `'md'` | Border radius |
+
+### Examples
+
+```tsx
+// Text line
+<Skeleton width="100%" height={16} />
+
+// Avatar
+<Skeleton width={48} height={48} rounded="full" />
+
+// Card layout
+<div className="space-y-3">
+  <Skeleton width={48} height={48} rounded="full" />
+  <Skeleton width="70%" height={16} />
+  <Skeleton width="100%" height={12} />
+  <Skeleton width="85%" height={12} />
+</div>
+```
+
+## Motion
+
+All loading components include smooth animations:
+- **Progress**: Spring-animated fill
+- **Spinner**: CSS rotate animation
+- **Dots**: Staggered bounce animation
+- **Skeleton**: Pulse animation

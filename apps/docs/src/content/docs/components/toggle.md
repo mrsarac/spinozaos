@@ -1,0 +1,119 @@
+---
+title: Toggle
+description: Toggle switch component with label support
+---
+
+## Toggle Component
+
+A toggle switch component with smooth animations and label support.
+
+```tsx
+import { Toggle } from '@spinozaos/react';
+
+<Toggle label="Dark mode" />
+```
+
+## Variants
+
+| Variant | Description |
+|---------|-------------|
+| `default` | Gold toggle |
+| `oracle` | Purple toggle |
+| `success` | Green toggle |
+
+## Sizes
+
+| Size | Dimensions |
+|------|------------|
+| `sm` | 32x20px |
+| `md` | 40x24px |
+| `lg` | 48x28px |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | - | Label text |
+| `description` | `string` | - | Description text |
+| `labelPosition` | `'left' \| 'right'` | `'right'` | Label position |
+| `checked` | `boolean` | - | Controlled state |
+| `defaultChecked` | `boolean` | `false` | Default state |
+| `onChange` | `function` | - | Change handler |
+| `disabled` | `boolean` | `false` | Disable toggle |
+
+## Examples
+
+```tsx
+// Basic toggle
+<Toggle label="Dark mode" />
+
+// With description
+<Toggle
+  label="Auto-save"
+  description="Automatically save your work"
+/>
+
+// Default checked
+<Toggle
+  label="Notifications enabled"
+  defaultChecked
+/>
+
+// Controlled
+const [enabled, setEnabled] = useState(false);
+
+<Toggle
+  label="Feature flag"
+  checked={enabled}
+  onChange={(e) => setEnabled(e.target.checked)}
+/>
+
+// Label on left
+<Toggle
+  label="Enable feature"
+  labelPosition="left"
+/>
+
+// Oracle variant
+<Toggle
+  label="Oracle mode"
+  variant="oracle"
+  defaultChecked
+/>
+
+// Success variant
+<Toggle
+  label="Online status"
+  variant="success"
+  defaultChecked
+/>
+
+// Disabled
+<Toggle
+  label="Locked setting"
+  disabled
+  defaultChecked
+/>
+
+// Settings panel
+<div className="space-y-4">
+  <Toggle label="Email notifications" defaultChecked />
+  <Toggle label="Push notifications" />
+  <Toggle label="Marketing emails" />
+  <Toggle label="Two-factor auth" variant="success" defaultChecked />
+</div>
+```
+
+## Accessibility
+
+- Uses `role="switch"` for screen readers
+- `aria-checked` state
+- Keyboard accessible (Space/Enter to toggle)
+- Focus visible styles
+
+## Motion
+
+The toggle includes smooth animations:
+- **Thumb**: Spring-animated slide
+- **Track**: Smooth scale on press
+- **Color**: Transition on state change
