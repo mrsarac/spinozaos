@@ -18,15 +18,16 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean --external react --external react-dom --external framer-motion",
-    "dev": "tsup src/index.ts --format cjs,esm --dts --watch --external react --external react-dom --external framer-motion",
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean --external react --external react-dom --external framer-motion --external lucide-react",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch --external react --external react-dom --external framer-motion --external lucide-react",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0",
-    "framer-motion": ">=10.0.0"
+    "framer-motion": ">=10.0.0",
+    "lucide-react": ">=0.300.0"
   },
   "dependencies": {
     "@spinozaos/tokens": "workspace:*",
@@ -42,7 +43,8 @@
     "typescript": "^5.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "framer-motion": "^10.18.0"
+    "framer-motion": "^10.18.0",
+    "lucide-react": "^0.460.0"
   },
   "publishConfig": {
     "access": "public"

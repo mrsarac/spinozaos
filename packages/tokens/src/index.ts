@@ -45,6 +45,26 @@ export const colors = {
     purple: '#8b5cf6',
     glow: 'rgba(139, 92, 246, 0.3)',
   },
+
+  // Clearance Levels (Security Badges)
+  clearance: {
+    cosmic: '#a855f7',      // Purple - Highest
+    topSecret: '#ef4444',   // Red
+    secret: '#f59e0b',      // Amber
+    classified: '#eab308',  // Yellow
+    standard: '#64748b',    // Gray - Default
+  },
+
+  // Confidence Indicators
+  confidence: {
+    high: '#22c55e',        // Green >= 70%
+    medium: '#fbbf24',      // Gold 40-69%
+    low: '#ef4444',         // Red < 40%
+    neutral: '#64748b',     // Gray - Unknown
+  },
+
+  // Decorative
+  teal: '#14b8a6',
 } as const;
 
 // ============================================
@@ -195,6 +215,10 @@ export const shadows = {
     yellowIntense: '0 0 40px rgba(251, 191, 36, 0.5)',
     oracle: '0 0 20px rgba(139, 92, 246, 0.3)',
     success: '0 0 20px rgba(34, 197, 94, 0.3)',
+    // Clearance glows
+    cosmic: '0 0 20px rgba(168, 85, 247, 0.4)',
+    topSecret: '0 0 20px rgba(239, 68, 68, 0.4)',
+    teal: '0 0 20px rgba(20, 184, 166, 0.3)',
   },
 } as const;
 
@@ -228,6 +252,16 @@ export const gradients = {
   hero: 'radial-gradient(ellipse at 50% 0%, rgba(251, 191, 36, 0.1) 0%, transparent 50%)',
   oracle: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(251, 191, 36, 0.2) 100%)',
   progress: 'linear-gradient(90deg, #fbbf24 0%, #d97706 100%)',
+  // Decorative Lines (Substance pattern)
+  decorativeLine: 'linear-gradient(90deg, #fbbf24 0%, #14b8a6 50%, #8b5cf6 100%)',
+  decorativeLineReverse: 'linear-gradient(90deg, #8b5cf6 0%, #14b8a6 50%, #fbbf24 100%)',
+  // Clearance badge backgrounds
+  clearanceCosmic: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(139, 92, 246, 0.1) 100%)',
+  clearanceTopSecret: 'linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(153, 27, 27, 0.1) 100%)',
+  // Confidence backgrounds
+  confidenceHigh: 'linear-gradient(90deg, rgba(34, 197, 94, 0.1) 0%, transparent 100%)',
+  confidenceMedium: 'linear-gradient(90deg, rgba(251, 191, 36, 0.1) 0%, transparent 100%)',
+  confidenceLow: 'linear-gradient(90deg, rgba(239, 68, 68, 0.1) 0%, transparent 100%)',
 } as const;
 
 // ============================================

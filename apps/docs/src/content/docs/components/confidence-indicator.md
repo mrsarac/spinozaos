@@ -1,0 +1,149 @@
+---
+title: ConfidenceIndicator
+description: Visual confidence/probability display component
+---
+
+## Overview
+
+ConfidenceIndicator displays confidence levels with color-coded feedback. Extracted from Substance AGI prediction patterns, it includes both a display component and an interactive slider.
+
+```tsx
+import { ConfidenceIndicator, ConfidenceSlider } from '@spinozaos/react';
+
+<ConfidenceIndicator value={75} />
+```
+
+## Confidence Levels
+
+| Range | Color | Label |
+|-------|-------|-------|
+| 70-100% | Green | High confidence |
+| 40-69% | Gold | Moderate |
+| 0-39% | Red | Low confidence |
+
+## Props (ConfidenceIndicator)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | - | Confidence value (0-100) |
+| `size` | `string` | `'md'` | Display size |
+| `variant` | `string` | `'default'` | Visual variant |
+| `showIcon` | `boolean` | `false` | Show trend icon |
+| `showLabel` | `boolean` | `false` | Show confidence label |
+| `showPercent` | `boolean` | `true` | Show % suffix |
+| `showBar` | `boolean` | `false` | Show progress bar |
+| `animated` | `boolean` | `true` | Animate on mount |
+
+## Props (ConfidenceSlider)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | - | Current value (0-100) |
+| `onChange` | `function` | - | Value change handler |
+| `disabled` | `boolean` | `false` | Disable slider |
+| `showValue` | `boolean` | `true` | Show value display |
+| `label` | `string` | - | Label text |
+
+## Examples
+
+### Basic Display
+
+```tsx
+// Simple value display
+<ConfidenceIndicator value={75} />
+
+// With icon and label
+<ConfidenceIndicator value={85} showIcon showLabel />
+
+// Large display
+<ConfidenceIndicator value={73} size="xl" showIcon showLabel />
+```
+
+### With Progress Bar
+
+```tsx
+<ConfidenceIndicator
+  value={68}
+  showIcon
+  showBar
+  animated
+/>
+```
+
+### Different Confidence Levels
+
+```tsx
+// High confidence
+<ConfidenceIndicator value={90} showIcon showLabel />
+
+// Medium confidence
+<ConfidenceIndicator value={55} showIcon showLabel />
+
+// Low confidence
+<ConfidenceIndicator value={25} showIcon showLabel />
+```
+
+### Card Variant
+
+```tsx
+<ConfidenceIndicator
+  value={82}
+  variant="card"
+  showIcon
+  showLabel
+  size="lg"
+/>
+```
+
+### Interactive Slider
+
+```tsx
+const [confidence, setConfidence] = useState(50);
+
+<ConfidenceSlider
+  value={confidence}
+  onChange={setConfidence}
+  label="Your Confidence Level"
+  showValue
+/>
+```
+
+### In Prediction Context
+
+```tsx
+<div className="p-6 bg-void border border-white/10">
+  <div className="flex items-center justify-between mb-4">
+    <span className="text-xs font-mono text-neutral-500 uppercase">
+      Market Probability
+    </span>
+    <span className="text-xs text-neutral-400">Updated 2h ago</span>
+  </div>
+
+  <div className="flex justify-center py-4">
+    <ConfidenceIndicator
+      value={73}
+      size="xl"
+      showIcon
+      showLabel
+      animated
+    />
+  </div>
+</div>
+```
+
+## Size Options
+
+| Size | Usage |
+|------|-------|
+| `sm` | Inline, compact displays |
+| `md` | Default, most contexts |
+| `lg` | Emphasized displays |
+| `xl` | Hero/featured content |
+
+## Use Cases
+
+- Prediction probability displays
+- Sentiment/confidence scores
+- Progress indicators
+- Market probability visualization
+- User confidence input

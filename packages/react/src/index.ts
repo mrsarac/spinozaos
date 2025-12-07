@@ -41,6 +41,30 @@ export {
   type SkeletonProps,
 } from './components/Progress';
 
+// Components - Data Display (Substance patterns)
+export {
+  ClearanceBadge,
+  clearanceBadgeVariants,
+  type ClearanceBadgeProps,
+} from './components/ClearanceBadge';
+
+export {
+  ConfidenceIndicator,
+  ConfidenceSlider,
+  confidenceIndicatorVariants,
+  type ConfidenceIndicatorProps,
+  type ConfidenceSliderProps,
+} from './components/ConfidenceIndicator';
+
+export {
+  DecorativeLine,
+  GradientDivider,
+  CardTopLine,
+  SectionDivider,
+  decorativeLineVariants,
+  type DecorativeLineProps,
+} from './components/DecorativeLine';
+
 // Re-export tokens and motion for convenience
 export * from '@spinozaos/tokens';
 export * from '@spinozaos/motion';
