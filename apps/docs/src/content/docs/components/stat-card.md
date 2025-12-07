@@ -1,0 +1,192 @@
+---
+title: StatCard
+description: Statistics display card with icons and trends
+---
+
+## Overview
+
+StatCard displays statistics with optional icons, trends, and tooltips. Extracted from Substance Leaderboard patterns, ideal for dashboards and data displays.
+
+```tsx
+import { StatCard } from '@spinozaos/react';
+import { Users } from 'lucide-react';
+
+<StatCard label="Total Users" value="12,847" icon={Users} />
+```
+
+## Variants
+
+| Variant | Description |
+|---------|-------------|
+| `default` | Simple background |
+| `bordered` | With border |
+| `elevated` | Border + shadow |
+| `gradient` | Gradient background |
+
+## Sizes
+
+| Size | Description |
+|------|-------------|
+| `sm` | Compact |
+| `md` | Default |
+| `lg` | Large |
+
+## Value Colors
+
+| Color | Usage |
+|-------|-------|
+| `default` | White |
+| `yellow` | Spinoza yellow |
+| `teal` | Teal accent |
+| `purple` | Purple accent |
+| `green` | Positive/success |
+| `red` | Negative/error |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | - | Stat label (required) |
+| `value` | `string \| number` | - | Stat value (required) |
+| `icon` | `LucideIcon` | - | Icon component |
+| `valueColor` | `string` | `'default'` | Value text color |
+| `variant` | `string` | `'default'` | Visual variant |
+| `size` | `string` | `'md'` | Card size |
+| `trend` | `string` | - | Trend direction |
+| `trendValue` | `string` | - | Trend percentage |
+| `tooltip` | `string` | - | Tooltip text |
+| `loading` | `boolean` | `false` | Loading state |
+| `animated` | `boolean` | `false` | Animate value |
+
+## Examples
+
+### Basic
+
+```tsx
+<StatCard label="Users" value="1,234" />
+```
+
+### With Icon
+
+```tsx
+import { Users, Target, TrendingUp } from 'lucide-react';
+
+<StatCard label="Users" value="1,234" icon={Users} />
+<StatCard label="Predictions" value="45,678" icon={Target} />
+<StatCard label="Growth" value="+12%" icon={TrendingUp} />
+```
+
+### With Trend
+
+```tsx
+<StatCard
+  label="Revenue"
+  value="$12,345"
+  trend="up"
+  trendValue="+15%"
+/>
+
+<StatCard
+  label="Churn"
+  value="2.3%"
+  trend="down"
+  trendValue="-0.5%"
+/>
+```
+
+### Different Colors
+
+```tsx
+<StatCard label="Success" value="89%" valueColor="green" />
+<StatCard label="Warning" value="45%" valueColor="yellow" />
+<StatCard label="Error" value="12%" valueColor="red" />
+```
+
+### With Tooltip
+
+```tsx
+<StatCard
+  label="Confidence"
+  value="73%"
+  tooltip="Average confidence level across all predictions"
+/>
+```
+
+### Loading State
+
+```tsx
+<StatCard label="Loading..." value="" loading />
+```
+
+## StatGrid
+
+Display multiple stats in a grid:
+
+```tsx
+import { StatCard, StatGrid } from '@spinozaos/react';
+
+<StatGrid columns={4}>
+  <StatCard label="Users" value="1,234" icon={Users} />
+  <StatCard label="Predictions" value="45,678" icon={Target} />
+  <StatCard label="Markets" value="89" icon={TrendingUp} />
+  <StatCard label="Confidence" value="67%" icon={Flame} />
+</StatGrid>
+```
+
+### StatGrid Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `columns` | `2-6` | `4` | Number of columns |
+| `gap` | `string` | `'none'` | Gap between items |
+
+### Gap Options
+
+```tsx
+<StatGrid columns={4} gap="none">...</StatGrid>  // Pixel gap
+<StatGrid columns={4} gap="sm">...</StatGrid>    // 8px gap
+<StatGrid columns={4} gap="md">...</StatGrid>    // 16px gap
+<StatGrid columns={4} gap="lg">...</StatGrid>    // 24px gap
+```
+
+## QuickStats Preset
+
+For simple stat displays:
+
+```tsx
+import { QuickStats } from '@spinozaos/react';
+import { Users, Target, TrendingUp, Flame } from 'lucide-react';
+
+<QuickStats
+  stats={[
+    { label: 'Users', value: '12.8K', icon: Users },
+    { label: 'Predictions', value: '45.6K', icon: Target },
+    { label: 'Markets', value: '89', icon: TrendingUp },
+    { label: 'Accuracy', value: '73%', icon: Flame, tooltip: 'Average accuracy' },
+  ]}
+/>
+```
+
+## Leaderboard Context
+
+```tsx
+<div className="border border-white/10">
+  <div className="p-4 border-b border-white/5">
+    <h2 className="text-lg font-serif text-white">Leaderboard</h2>
+  </div>
+  <StatGrid columns={4} gap="none">
+    <StatCard label="Predictors" value="1,234" icon={Users} />
+    <StatCard label="Predictions" value="45,678" icon={Target} />
+    <StatCard label="Markets" value="89" icon={TrendingUp} />
+    <StatCard label="Avg Confidence" value="67%" icon={Flame} />
+  </StatGrid>
+</div>
+```
+
+## Use Cases
+
+- Dashboard KPIs
+- Analytics summaries
+- Leaderboard stats
+- Account overviews
+- Performance metrics

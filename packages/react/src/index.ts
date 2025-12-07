@@ -65,6 +65,76 @@ export {
   type DecorativeLineProps,
 } from './components/DecorativeLine';
 
+// Components - Navigation & Disclosure
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  FAQAccordion,
+  accordionVariants,
+  accordionItemVariants,
+  accordionTriggerVariants,
+  type AccordionProps,
+  type AccordionItemProps,
+  type AccordionTriggerProps,
+  type AccordionContentProps,
+  type FAQItem,
+  type FAQAccordionProps,
+} from './components/Accordion';
+
+export {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  PeriodTabs,
+  tabsListVariants,
+  tabTriggerVariants,
+  type TabsProps,
+  type TabsListProps,
+  type TabsTriggerProps,
+  type TabsContentProps,
+  type PeriodTabsProps,
+} from './components/Tabs';
+
+// Components - User Display
+export {
+  Avatar,
+  AvatarGroup,
+  avatarVariants,
+  type AvatarProps,
+  type AvatarGroupProps,
+} from './components/Avatar';
+
+// Components - Data Display (Stats & State)
+export {
+  StatCard,
+  StatGrid,
+  QuickStats,
+  statCardVariants,
+  valueVariants,
+  labelVariants,
+  type StatCardProps,
+  type StatGridProps,
+  type QuickStatsProps,
+} from './components/StatCard';
+
+export {
+  EmptyState,
+  NoResults,
+  NoData,
+  ErrorState,
+  NotFound,
+  emptyStateVariants,
+  iconContainerVariants,
+  type EmptyStateProps,
+  type NoResultsProps,
+  type NoDataProps,
+  type ErrorStateProps,
+  type NotFoundProps,
+} from './components/EmptyState';
+
 // Re-export tokens and motion for convenience
 export * from '@spinozaos/tokens';
 export * from '@spinozaos/motion';

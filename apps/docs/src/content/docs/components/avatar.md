@@ -1,0 +1,162 @@
+---
+title: Avatar
+description: User avatar with fallback initials and status indicators
+---
+
+## Overview
+
+Avatar displays user profile images with fallback to initials. Extracted from Substance Leaderboard patterns, it supports various sizes, variants, and status indicators.
+
+```tsx
+import { Avatar } from '@spinozaos/react';
+
+<Avatar name="Mustafa Sarac" />
+```
+
+## Sizes
+
+| Size | Dimensions |
+|------|------------|
+| `xs` | 24x24px |
+| `sm` | 32x32px |
+| `md` | 40x40px (default) |
+| `lg` | 48x48px |
+| `xl` | 64x64px |
+| `2xl` | 80x80px |
+
+## Variants
+
+| Variant | Description |
+|---------|-------------|
+| `default` | Gray background |
+| `oracle` | Yellow/gold (Substance tier) |
+| `cosmic` | Purple |
+| `teal` | Teal |
+| `success` | Green |
+| `error` | Red |
+| `gradient` | Multi-color gradient |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `src` | `string` | - | Image URL |
+| `alt` | `string` | - | Image alt text |
+| `name` | `string` | - | Name for initials |
+| `size` | `string` | `'md'` | Avatar size |
+| `variant` | `string` | `'default'` | Color variant |
+| `shape` | `string` | `'square'` | Shape (circle/square/rounded) |
+| `status` | `string` | - | Status indicator |
+| `highlighted` | `boolean` | `false` | Show highlight ring |
+| `fallback` | `ReactNode` | - | Custom fallback content |
+
+## Examples
+
+### With Image
+
+```tsx
+<Avatar
+  src="https://example.com/avatar.jpg"
+  name="John Doe"
+  size="lg"
+/>
+```
+
+### With Initials
+
+```tsx
+// Generates "MS" from name
+<Avatar name="Mustafa Sarac" />
+
+// Single word generates first 2 letters
+<Avatar name="Oracle" />
+```
+
+### Different Variants
+
+```tsx
+<Avatar name="Default" variant="default" />
+<Avatar name="Oracle" variant="oracle" />
+<Avatar name="Cosmic" variant="cosmic" />
+<Avatar name="Teal" variant="teal" />
+<Avatar name="Success" variant="success" />
+<Avatar name="Gradient" variant="gradient" />
+```
+
+### Different Shapes
+
+```tsx
+<Avatar name="Circle" shape="circle" />
+<Avatar name="Square" shape="square" />
+<Avatar name="Rounded" shape="rounded" />
+```
+
+### With Status
+
+```tsx
+<Avatar name="Online User" status="online" />
+<Avatar name="Away User" status="away" />
+<Avatar name="Busy User" status="busy" />
+<Avatar name="Offline User" status="offline" />
+```
+
+### Highlighted
+
+```tsx
+<Avatar name="Current User" highlighted variant="oracle" />
+```
+
+## Avatar Group
+
+Display multiple avatars in a stack:
+
+```tsx
+import { Avatar, AvatarGroup } from '@spinozaos/react';
+
+<AvatarGroup max={4}>
+  <Avatar name="Alice Smith" />
+  <Avatar name="Bob Johnson" />
+  <Avatar name="Carol Williams" />
+  <Avatar name="David Brown" />
+  <Avatar name="Eva Martinez" />
+</AvatarGroup>
+```
+
+### AvatarGroup Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `max` | `number` | - | Max visible avatars |
+| `size` | `string` | `'md'` | Size for all avatars |
+| `spacing` | `string` | `'normal'` | Overlap amount |
+
+### Spacing Options
+
+```tsx
+<AvatarGroup spacing="tight" max={5}>...</AvatarGroup>
+<AvatarGroup spacing="normal" max={5}>...</AvatarGroup>
+<AvatarGroup spacing="loose" max={5}>...</AvatarGroup>
+```
+
+## Leaderboard Context
+
+```tsx
+<div className="flex items-center gap-4 p-4 bg-neutral-900/50">
+  <span className="text-neutral-500 font-mono">#1</span>
+  <Avatar name="Oracle Master" variant="oracle" />
+  <div className="flex-1">
+    <span className="text-white font-medium">Oracle Master</span>
+    <span className="text-xs text-neutral-500 block">42 predictions</span>
+  </div>
+  <span className="text-green-400 font-mono">89%</span>
+</div>
+```
+
+## Use Cases
+
+- User profiles
+- Leaderboard entries
+- Comment authors
+- Team member lists
+- Activity feeds
+- Chat participants

@@ -1,0 +1,158 @@
+---
+title: Accordion
+description: Expandable content sections with smooth animations
+---
+
+## Overview
+
+Accordion provides expandable/collapsible content sections. Extracted from Substance FAQ patterns, it supports single or multiple open items with smooth animations.
+
+```tsx
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@spinozaos/react';
+
+<Accordion type="single">
+  <AccordionItem value="item-1">
+    <AccordionTrigger>What is SpinozaOS?</AccordionTrigger>
+    <AccordionContent>A design system for superintelligence.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## Types
+
+| Type | Behavior |
+|------|----------|
+| `single` | Only one item open at a time |
+| `multiple` | Multiple items can be open |
+
+## Variants
+
+| Variant | Description |
+|---------|-------------|
+| `default` | Dark background with border |
+| `bordered` | Border only, transparent background |
+| `separated` | More spacing between items |
+
+## Accordion Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `'single' \| 'multiple'` | `'single'` | Open behavior |
+| `defaultValue` | `string[]` | `[]` | Initially open items |
+| `value` | `string[]` | - | Controlled open items |
+| `onValueChange` | `function` | - | Change callback |
+| `variant` | `string` | `'default'` | Visual style |
+
+## AccordionItem Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | - | Unique identifier (required) |
+| `disabled` | `boolean` | `false` | Disable this item |
+| `variant` | `string` | - | Override variant |
+
+## AccordionTrigger Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Trigger size |
+| `icon` | `ReactNode` | ChevronDown | Custom icon |
+| `hideIcon` | `boolean` | `false` | Hide the icon |
+
+## Examples
+
+### Single Open
+
+```tsx
+<Accordion type="single" defaultValue={['faq-1']}>
+  <AccordionItem value="faq-1">
+    <AccordionTrigger>First Question</AccordionTrigger>
+    <AccordionContent>Answer to the first question.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="faq-2">
+    <AccordionTrigger>Second Question</AccordionTrigger>
+    <AccordionContent>Answer to the second question.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Multiple Open
+
+```tsx
+<Accordion type="multiple">
+  <AccordionItem value="section-1">
+    <AccordionTrigger>Section 1</AccordionTrigger>
+    <AccordionContent>Content for section 1.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="section-2">
+    <AccordionTrigger>Section 2</AccordionTrigger>
+    <AccordionContent>Content for section 2.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+### Disabled Item
+
+```tsx
+<Accordion type="single">
+  <AccordionItem value="enabled">
+    <AccordionTrigger>Enabled Item</AccordionTrigger>
+    <AccordionContent>This can be opened.</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="disabled" disabled>
+    <AccordionTrigger>Disabled Item</AccordionTrigger>
+    <AccordionContent>This cannot be opened.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+## FAQ Preset
+
+For common FAQ layouts, use the `FAQAccordion` preset:
+
+```tsx
+import { FAQAccordion } from '@spinozaos/react';
+
+<FAQAccordion
+  showIcon
+  items={[
+    {
+      question: 'What is AGI?',
+      answer: 'Artificial General Intelligence...',
+    },
+    {
+      question: 'When will AGI arrive?',
+      answer: 'Predictions vary widely...',
+    },
+  ]}
+/>
+```
+
+## Controlled Mode
+
+```tsx
+const [openItems, setOpenItems] = useState<string[]>(['item-1']);
+
+<Accordion
+  type="multiple"
+  value={openItems}
+  onValueChange={setOpenItems}
+>
+  {/* items */}
+</Accordion>
+```
+
+## Accessibility
+
+- Follows WAI-ARIA Accordion pattern
+- Full keyboard navigation (Arrow keys, Enter, Space)
+- Proper ARIA attributes (expanded, controls)
+- Focus management
+
+## Use Cases
+
+- FAQ sections
+- Settings panels
+- Collapsible content areas
+- Navigation menus
+- Feature explanations
