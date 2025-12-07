@@ -34,3 +34,6 @@ yarn.lock
 
 # Storybook
 storybook-static/
+
+# Astro cache
+apps/docs/.astro/
