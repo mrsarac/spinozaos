@@ -1,0 +1,64 @@
+{
+  "name": "@spinozaos/react",
+  "version": "0.1.0",
+  "description": "SpinozaOS React components - dark-first, motion-first UI components",
+  "author": "Mustafa Sarac <mustafa@mustafasarac.com>",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean --external react --external react-dom --external framer-motion",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch --external react --external react-dom --external framer-motion",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "framer-motion": ">=10.0.0"
+  },
+  "dependencies": {
+    "@spinozaos/tokens": "workspace:*",
+    "@spinozaos/motion": "workspace:*",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "framer-motion": "^10.18.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrsarac/spinozaos.git",
+    "directory": "packages/react"
+  },
+  "keywords": [
+    "design-system",
+    "react",
+    "components",
+    "spinozaos",
+    "dark-mode",
+    "ui",
+    "framer-motion"
+  ]
+}

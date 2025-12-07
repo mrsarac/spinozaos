@@ -1,0 +1,54 @@
+{
+  "name": "@spinozaos/motion",
+  "version": "0.1.0",
+  "description": "SpinozaOS motion presets - spring physics, easing curves, and animation variants",
+  "author": "Mustafa Sarac <mustafa@mustafasarac.com>",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "framer-motion": ">=10.0.0"
+  },
+  "peerDependenciesMeta": {
+    "framer-motion": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrsarac/spinozaos.git",
+    "directory": "packages/motion"
+  },
+  "keywords": [
+    "design-system",
+    "motion",
+    "animation",
+    "framer-motion",
+    "spinozaos",
+    "spring-physics"
+  ]
+}

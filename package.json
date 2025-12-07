@@ -1,0 +1,36 @@
+{
+  "name": "spinozaos",
+  "version": "0.0.0",
+  "private": true,
+  "description": "SpinozaOS - Design System for the Age of Superintelligence",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrsarac/spinozaos.git"
+  },
+  "author": "Mustafa Sarac <mustafa@mustafasarac.com>",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "storybook": "turbo run storybook",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=./packages/* && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "turbo": "^2.3.0",
+    "typescript": "^5.3.3"
+  },
+  "packageManager": "pnpm@8.15.0",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
