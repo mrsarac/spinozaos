@@ -1,6 +1,6 @@
 {
   "name": "@spinozaos/tailwind",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "SpinozaOS Tailwind CSS preset - dark-first design system configuration",
   "author": "Mustafa Sarac <mustafa@mustafasarac.com>",
   "license": "MIT",

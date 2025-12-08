@@ -1,6 +1,6 @@
 {
   "name": "@spinozaos/motion",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "SpinozaOS motion presets - spring physics, easing curves, and animation variants",
   "author": "Mustafa Sarac <mustafa@mustafasarac.com>",
   "license": "MIT",
