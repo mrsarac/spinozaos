@@ -1,0 +1,186 @@
+---
+// GlitchTextPreview.astro - Interactive glitch effect preview
+---
+
+<div class="glitch-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Glitch Effect (Hover)</div>
+    <div class="preview-center">
+      <span class="glitch-text" data-text="SPINOZA">SPINOZA</span>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">RGB Split Variants</div>
+    <div class="preview-row">
+      <span class="glitch-text glitch-yellow" data-text="YELLOW">YELLOW</span>
+      <span class="glitch-text glitch-oracle" data-text="ORACLE">ORACLE</span>
+      <span class="glitch-text glitch-white" data-text="WHITE">WHITE</span>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Sizes</div>
+    <div class="preview-row">
+      <span class="glitch-text glitch-sm" data-text="Small">Small</span>
+      <span class="glitch-text glitch-md" data-text="Medium">Medium</span>
+      <span class="glitch-text glitch-lg" data-text="Large">Large</span>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Always Active</div>
+    <div class="preview-center">
+      <span class="glitch-text glitch-always" data-text="ACTIVE">ACTIVE</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .glitch-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 2rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-center {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+  }
+
+  .preview-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Glitch Text Base */
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+    font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 2rem;
+    color: #fbbf24;
+    cursor: default;
+    user-select: none;
+  }
+
+  /* RGB Split Layers */
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .glitch-text::before {
+    color: #00FFF9;
+    z-index: -1;
+  }
+
+  .glitch-text::after {
+    color: #FF00C1;
+    z-index: -2;
+  }
+
+  /* Hover Animation */
+  .glitch-text:hover::before {
+    opacity: 0.8;
+    animation: glitch-cyan 0.3s infinite;
+  }
+
+  .glitch-text:hover::after {
+    opacity: 0.8;
+    animation: glitch-magenta 0.3s infinite;
+  }
+
+  .glitch-text:hover {
+    animation: glitch-main 0.3s infinite;
+  }
+
+  /* Always Active */
+  .glitch-always::before {
+    opacity: 0.8;
+    animation: glitch-cyan 0.3s infinite;
+  }
+
+  .glitch-always::after {
+    opacity: 0.8;
+    animation: glitch-magenta 0.3s infinite;
+  }
+
+  .glitch-always {
+    animation: glitch-main 0.3s infinite;
+  }
+
+  /* Animations */
+  @keyframes glitch-main {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 1px); }
+    40% { transform: translate(2px, -1px); }
+    60% { transform: translate(-1px, -1px); }
+    80% { transform: translate(1px, 1px); }
+  }
+
+  @keyframes glitch-cyan {
+    0%, 100% { transform: translate(0); clip-path: inset(0 0 50% 0); }
+    20% { transform: translate(3px, 0); }
+    40% { transform: translate(-3px, 0); }
+    60% { transform: translate(2px, 0); }
+    80% { transform: translate(-2px, 0); }
+  }
+
+  @keyframes glitch-magenta {
+    0%, 100% { transform: translate(0); clip-path: inset(50% 0 0 0); }
+    20% { transform: translate(-3px, 0); }
+    40% { transform: translate(3px, 0); }
+    60% { transform: translate(-2px, 0); }
+    80% { transform: translate(2px, 0); }
+  }
+
+  /* Color Variants */
+  .glitch-yellow { color: #fbbf24; }
+  .glitch-oracle { color: #8b5cf6; }
+  .glitch-oracle::before { color: #00FFF9; }
+  .glitch-oracle::after { color: #FF00C1; }
+  .glitch-white { color: #ffffff; }
+
+  /* Sizes */
+  .glitch-sm { font-size: 1.25rem; }
+  .glitch-md { font-size: 1.75rem; }
+  .glitch-lg { font-size: 2.5rem; }
+
+  /* Scan Line Overlay */
+  .glitch-text::selection {
+    background: rgba(251, 191, 36, 0.3);
+  }
+</style>

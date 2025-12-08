@@ -1,0 +1,337 @@
+---
+title: Micro-interactions
+description: Subtle animations that enhance user experience
+---
+
+import MicroInteractionsPreview from '../../../components/MicroInteractionsPreview.astro';
+
+## Overview
+
+Micro-interactions are small, contained animations that provide feedback, guide user attention, and add polish to interfaces. Extracted from Substance AGI patterns, these interactions follow the SpinozaOS motion philosophy.
+
+<MicroInteractionsPreview />
+
+## Button Interactions
+
+### Scale on Hover
+
+```tsx
+const scaleVariants = {
+  initial: { scale: 1 },
+  hover: { scale: 1.05 },
+  tap: { scale: 0.98 }
+};
+
+<motion.button
+  variants={scaleVariants}
+  initial="initial"
+  whileHover="hover"
+  whileTap="tap"
+>
+  Scale on Hover
+</motion.button>
+```
+
+### Lift Effect
+
+```tsx
+const liftVariants = {
+  initial: { y: 0, boxShadow: '0 0 0 rgba(251, 191, 36, 0)' },
+  hover: {
+    y: -2,
+    boxShadow: '0 4px 12px rgba(251, 191, 36, 0.2)'
+  }
+};
+
+<motion.button
+  variants={liftVariants}
+  initial="initial"
+  whileHover="hover"
+  transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+>
+  Lift Effect
+</motion.button>
+```
+
+### Glow Pulse
+
+```css
+.btn-glow {
+  position: relative;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: blur(12px);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.btn-glow:hover::before {
+  opacity: 0.6;
+}
+```
+
+## Loading States
+
+### Spinner
+
+```tsx
+<motion.div
+  className="spinner"
+  animate={{ rotate: 360 }}
+  transition={{
+    duration: 0.8,
+    repeat: Infinity,
+    ease: 'linear'
+  }}
+/>
+```
+
+```css
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #fbbf24;
+  border-radius: 50%;
+}
+```
+
+### Pulse Dot
+
+```tsx
+const pulseVariants = {
+  animate: {
+    scale: [1, 1.2, 1],
+    opacity: [1, 0.7, 1]
+  }
+};
+
+<motion.div
+  className="pulse-dot"
+  variants={pulseVariants}
+  animate="animate"
+  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+/>
+```
+
+### Typing Dots
+
+```tsx
+const typingVariants = {
+  animate: (i: number) => ({
+    y: [0, -8, 0],
+    transition: {
+      duration: 1.4,
+      repeat: Infinity,
+      ease: 'easeInOut',
+      delay: i * 0.2
+    }
+  })
+};
+
+<div className="typing-dots">
+  {[0, 1, 2].map(i => (
+    <motion.span
+      key={i}
+      custom={i}
+      variants={typingVariants}
+      animate="animate"
+    />
+  ))}
+</div>
+```
+
+## Scan Line Effect
+
+The scan line creates a cyberpunk data-scanning aesthetic:
+
+```css
+.scan-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+```
+
+## Confidence Slider
+
+Color-coded slider that changes based on value:
+
+```tsx
+const getColor = (value: number) => {
+  if (value >= 70) return '#22c55e'; // Green - high confidence
+  if (value >= 40) return '#f59e0b'; // Amber - medium
+  return '#ef4444'; // Red - low
+};
+
+<div className="slider-container">
+  <input
+    type="range"
+    min="0"
+    max="100"
+    value={confidence}
+    onChange={(e) => setConfidence(Number(e.target.value))}
+  />
+  <div
+    className="slider-fill"
+    style={{
+      width: `${confidence}%`,
+      background: 'linear-gradient(90deg, #ef4444, #f59e0b, #22c55e)'
+    }}
+  />
+  <span style={{ color: getColor(confidence) }}>
+    {confidence}%
+  </span>
+</div>
+```
+
+## Focus Ring Animation
+
+Accessible focus states with animated rings:
+
+```css
+.focus-input:focus {
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+}
+
+.focus-btn:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+}
+```
+
+With Framer Motion:
+
+```tsx
+const focusVariants = {
+  initial: { boxShadow: '0 0 0 0 rgba(251, 191, 36, 0)' },
+  focus: { boxShadow: '0 0 0 3px rgba(251, 191, 36, 0.2)' }
+};
+
+<motion.input
+  variants={focusVariants}
+  initial="initial"
+  whileFocus="focus"
+  transition={{ duration: 0.2 }}
+/>
+```
+
+## Stagger Animation
+
+Items appearing in sequence:
+
+```tsx
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: 'easeOut' }
+  }
+};
+
+<motion.div
+  variants={containerVariants}
+  initial="hidden"
+  animate="visible"
+>
+  {items.map((item, i) => (
+    <motion.div key={i} variants={itemVariants}>
+      {item}
+    </motion.div>
+  ))}
+</motion.div>
+```
+
+## Best Practices
+
+### Duration Guidelines
+
+| Interaction Type | Duration | Easing |
+|-----------------|----------|--------|
+| Hover feedback | 150-200ms | ease-out |
+| Button press | 100ms | ease-in-out |
+| Reveal/expand | 200-300ms | ease-out |
+| Page transitions | 300-500ms | ease-in-out |
+| Loading loops | 800-2000ms | linear |
+
+### Spring Configurations
+
+```tsx
+// Quick, snappy response
+const snappy = { type: 'spring', stiffness: 400, damping: 25 };
+
+// Gentle, smooth motion
+const gentle = { type: 'spring', stiffness: 200, damping: 20 };
+
+// Bouncy, playful feel
+const bouncy = { type: 'spring', stiffness: 300, damping: 10 };
+```
+
+### Accessibility
+
+Always respect reduced motion preferences:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```
+
+```tsx
+import { useReducedMotion } from 'framer-motion';
+
+const prefersReducedMotion = useReducedMotion();
+
+<motion.div
+  animate={{ scale: prefersReducedMotion ? 1 : 1.05 }}
+/>
+```
+
+## Use Cases
+
+| Component | Micro-interaction | Purpose |
+|-----------|------------------|---------|
+| Buttons | Scale/lift on hover | Affordance |
+| Forms | Focus ring animation | Accessibility |
+| Loading | Spinner/dots | Progress feedback |
+| Lists | Stagger reveal | Visual hierarchy |
+| Cards | Hover elevation | Interactivity hint |
+| Sliders | Value color change | State feedback |

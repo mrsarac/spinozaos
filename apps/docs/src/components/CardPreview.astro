@@ -1,5 +1,5 @@
 ---
-// CardPreview.astro - Static preview of Card variants
+// CardPreview.astro - Interactive preview of Card variants with code
 ---
 
 <div class="card-preview not-content">
@@ -30,13 +30,32 @@
     <div class="preview-grid">
       <div class="card card-default card-interactive">
         <div class="card-title">Hover Me</div>
-        <div class="card-body">Interactive card with hover effect</div>
+        <div class="card-body">Interactive card with lift effect</div>
       </div>
-      <div class="card card-oracle">
+      <div class="card card-oracle card-interactive">
         <div class="card-title">Oracle Card</div>
         <div class="card-body">Premium purple gradient glow</div>
       </div>
     </div>
+  </div>
+
+  <div class="code-section">
+    <div class="code-header">
+      <span class="code-lang">tsx</span>
+      <button class="copy-btn" id="card-copy">
+        <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <span>Copy</span>
+      </button>
+    </div>
+    <pre class="code-block"><code>{`import { Card } from '@spinozaos/react';
+
+<Card variant="default">Default Card</Card>
+<Card variant="elevated">Elevated Card</Card>
+<Card variant="outlined">Outlined Card</Card>
+<Card variant="oracle" interactive>Oracle Card</Card>`}</code></pre>
   </div>
 </div>
 
@@ -132,5 +151,99 @@
     background: rgba(255, 255, 255, 0.04);
     border-color: rgba(251, 191, 36, 0.3);
     transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-oracle.card-interactive:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+  }
+
+  /* Code Section */
+  .code-section {
+    margin-top: 1.5rem;
+    background: #0a0a0f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .code-lang {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+  }
+
+  .copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 4px;
+    color: #fbbf24;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    background: rgba(251, 191, 36, 0.2);
+    border-color: #fbbf24;
+  }
+
+  .copy-btn.copied {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.5);
+    color: #22c55e;
+  }
+
+  .copy-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .code-block {
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    background: transparent;
+  }
+
+  .code-block code {
+    background: none;
+    padding: 0;
   }
 </style>
+
+<script is:inline>
+  document.getElementById('card-copy')?.addEventListener('click', function() {
+    const code = this.closest('.code-section').querySelector('code').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+      this.classList.add('copied');
+      this.querySelector('span').textContent = 'Copied!';
+      setTimeout(() => {
+        this.classList.remove('copied');
+        this.querySelector('span').textContent = 'Copy';
+      }, 2000);
+    });
+  });
+</script>

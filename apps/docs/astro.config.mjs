@@ -39,6 +39,7 @@ export default defineConfig({
             { label: "Overview", slug: "motion/overview" },
             { label: "Springs", slug: "motion/springs" },
             { label: "Variants", slug: "motion/variants" },
+            { label: "Micro-interactions", slug: "motion/micro-interactions" },
           ],
         },
         {
@@ -68,6 +69,7 @@ export default defineConfig({
             { label: "StatCard", slug: "components/stat-card" },
             { label: "EmptyState", slug: "components/empty-state" },
             // Substance Design
+            { label: "GlitchText", slug: "components/glitch-text" },
             { label: "ClearanceBadge", slug: "components/clearance-badge" },
             { label: "ConfidenceIndicator", slug: "components/confidence-indicator" },
             { label: "DecorativeLine", slug: "components/decorative-line" },

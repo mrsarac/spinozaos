@@ -1,0 +1,131 @@
+---
+// CodePreview.astro - Interactive code preview with copy button
+interface Props {
+  code: string;
+  language?: string;
+}
+
+const { code, language = 'tsx' } = Astro.props;
+const id = `code-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class="code-preview not-content">
+  <div class="code-header">
+    <span class="code-lang">{language}</span>
+    <button class="copy-btn" data-code={code} data-id={id} onclick={`copyCode('${id}')`}>
+      <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      <span class="copy-text">Copy</span>
+    </button>
+  </div>
+  <pre class="code-block" id={id}><code class={`language-${language}`}>{code}</code></pre>
+</div>
+
+<style>
+  .code-preview {
+    background: #0a0a0f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .code-lang {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+  }
+
+  .copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 4px;
+    color: #fbbf24;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    background: rgba(251, 191, 36, 0.2);
+    border-color: #fbbf24;
+  }
+
+  .copy-btn.copied {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.5);
+    color: #22c55e;
+  }
+
+  .copy-icon, .check-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .code-block {
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    background: transparent;
+  }
+
+  .code-block code {
+    background: none;
+    padding: 0;
+  }
+
+  /* Syntax highlighting colors */
+  .code-block .keyword { color: #c084fc; }
+  .code-block .string { color: #86efac; }
+  .code-block .comment { color: #64748b; }
+  .code-block .function { color: #fbbf24; }
+</style>
+
+<script is:inline>
+  function copyCode(id) {
+    const codeBlock = document.getElementById(id);
+    const btn = document.querySelector(`[data-id="${id}"]`);
+    const code = codeBlock.textContent;
+
+    navigator.clipboard.writeText(code).then(() => {
+      btn.classList.add('copied');
+      btn.querySelector('.copy-icon').style.display = 'none';
+      btn.querySelector('.check-icon').style.display = 'block';
+      btn.querySelector('.copy-text').textContent = 'Copied!';
+
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.querySelector('.copy-icon').style.display = 'block';
+        btn.querySelector('.check-icon').style.display = 'none';
+        btn.querySelector('.copy-text').textContent = 'Copy';
+      }, 2000);
+    });
+  }
+</script>

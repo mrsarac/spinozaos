@@ -1,0 +1,135 @@
+---
+title: GlitchText
+description: Cyberpunk RGB split glitch effect for text
+---
+
+import GlitchTextPreview from '../../../components/GlitchTextPreview.astro';
+
+## Overview
+
+GlitchText creates a cyberpunk-style RGB split glitch effect. Extracted from Substance AGI patterns, it uses layered pseudo-elements with cyan and magenta color separation.
+
+<GlitchTextPreview />
+
+## Installation
+
+```tsx
+import { GlitchText } from '@spinozaos/react';
+
+<GlitchText>SPINOZA</GlitchText>
+```
+
+## Variants
+
+| Variant | Description |
+|---------|-------------|
+| `yellow` | Default gold/yellow text |
+| `white` | White text |
+| `indigo` | Oracle purple text |
+
+## Sizes
+
+| Size | Font Size |
+|------|-----------|
+| `sm` | 1.125rem (18px) |
+| `md` | 1.5rem (24px) |
+| `lg` | 2.25rem (36px) |
+| `xl` | 3.75rem (60px) |
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `string` | - | Text content |
+| `variant` | `string` | `'yellow'` | Color variant |
+| `size` | `string` | `'md'` | Text size |
+| `glow` | `boolean` | `false` | Add text glow |
+| `glitchOnHover` | `boolean` | `true` | Glitch on hover |
+| `alwaysGlitch` | `boolean` | `false` | Always animate |
+| `rgbSplit` | `boolean` | `true` | Enable RGB split |
+
+## Examples
+
+```tsx
+// Basic usage
+<GlitchText>SUPERINTELLIGENCE</GlitchText>
+
+// Always glitching
+<GlitchText alwaysGlitch>ACTIVE</GlitchText>
+
+// With glow effect
+<GlitchText glow size="xl">ORACLE</GlitchText>
+
+// Oracle variant
+<GlitchText variant="indigo" size="lg">
+  PROPHECY
+</GlitchText>
+
+// Without RGB split (simple shake)
+<GlitchText rgbSplit={false}>MINIMAL</GlitchText>
+
+// Hero section usage
+<div className="text-center">
+  <GlitchText size="xl" glow alwaysGlitch>
+    SPINOZA
+  </GlitchText>
+  <Text variant="body" className="mt-4">
+    Design System for Superintelligence
+  </Text>
+</div>
+```
+
+## CSS Variables
+
+The glitch effect uses these colors:
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--glitch-cyan` | #00FFF9 | Top layer offset |
+| `--glitch-magenta` | #FF00C1 | Bottom layer offset |
+
+## Animation Details
+
+The effect consists of three layers:
+1. **Main text** - Slight position shake
+2. **Cyan layer** - `::before` pseudo-element, top half clipped
+3. **Magenta layer** - `::after` pseudo-element, bottom half clipped
+
+```css
+/* Keyframe example */
+@keyframes glitch-cyan {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(3px, 0); }
+  40% { transform: translate(-3px, 0); }
+  60% { transform: translate(2px, 0); }
+  80% { transform: translate(-2px, 0); }
+}
+```
+
+## Accessibility
+
+- Respects `prefers-reduced-motion` media query
+- Falls back to static text when motion is reduced
+- Screen readers read the text normally
+
+## Use Cases
+
+```tsx
+// Hero headlines
+<GlitchText size="xl" glow>AGI 2027</GlitchText>
+
+// Feature highlights
+<GlitchText variant="indigo">ORACLE TIER</GlitchText>
+
+// Error states
+<GlitchText variant="white" alwaysGlitch>
+  SYSTEM ALERT
+</GlitchText>
+
+// Interactive buttons
+<Button>
+  <GlitchText size="sm" glitchOnHover>
+    ACTIVATE
+  </GlitchText>
+</Button>
+```
