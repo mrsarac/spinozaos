@@ -10,7 +10,7 @@
 
 ## Overview
 
-SpinozaOS is a **philosophy-driven**, **motion-first** design system built for AGI-era applications. Born from the [Substance AGI Intelligence Engine](https://substance.mustafasarac.com), it provides award-winning design tokens, React components, and animation presets.
+SpinozaOS is a **philosophy-driven**, **motion-first** design system built for AGI-era applications. Born from the Substance AGI Intelligence Engine, it provides design tokens, React components, and animation presets.
 
 ### Design Philosophy
 
@@ -33,12 +33,12 @@ SpinozaOS = Bloomberg Terminal × Sci-Fi UI × Spinoza Philosophy
 
 ## Packages
 
-| Package | Description | Status |
-|---------|-------------|--------|
-| `@spinozaos/tokens` | Design tokens (colors, typography, spacing) | 🚧 WIP |
-| `@spinozaos/react` | React components | 🚧 WIP |
-| `@spinozaos/motion` | Framer Motion presets | 🚧 WIP |
-| `@spinozaos/tailwind` | Tailwind CSS preset | 🚧 WIP |
+| Package | Description | Version |
+|---------|-------------|---------|
+| `@spinozaos/tokens` | Design tokens (colors, typography, spacing) | 0.2.0 |
+| `@spinozaos/react` | React components (21 components) | 0.2.0 |
+| `@spinozaos/motion` | Framer Motion presets | 0.2.0 |
+| `@spinozaos/tailwind` | Tailwind CSS preset | 0.2.0 |
 
 ---
 
@@ -65,7 +65,7 @@ colors.spinoza.yellow  // #fbbf24
 colors.void            // #020617
 
 // Typography
-typography.fontFamily.serif  // 'Playfair Display', Georgia, serif
+typography.fontFamily.serif  // 'Cinzel', 'Playfair Display', Georgia, serif
 
 // Spacing
 spacing[4]  // 1rem (16px)
@@ -124,7 +124,7 @@ module.exports = {
 
 ```css
 /* Font Families */
---font-serif: 'Playfair Display', Georgia, serif;
+--font-serif: 'Cinzel', 'Playfair Display', Georgia, serif;
 --font-sans: 'Inter', system-ui, sans-serif;
 --font-mono: 'JetBrains Mono', monospace;
 ```
@@ -214,12 +214,12 @@ spinozaos/
 ## Roadmap
 
 - [x] Project setup
-- [ ] @spinozaos/tokens v1.0
-- [ ] @spinozaos/motion v1.0
-- [ ] @spinozaos/react v1.0
-- [ ] Documentation site
+- [x] NPM publish (v0.2.0)
+- [x] 21 React components
+- [x] 145 unit tests
+- [x] CI/CD pipeline
+- [ ] v1.0 stable release
 - [ ] Storybook
-- [ ] NPM publish
 
 ---
 
@@ -233,16 +233,9 @@ spinozaos/
 
 ---
 
-## Related Projects
-
-- [Substance AGI](https://substance.mustafasarac.com) - AGI Prediction Engine (primary consumer)
-- [Spinoza](https://spinoza.mustafasarac.com) - Emotion Intelligence Platform
-
----
-
 ## License
 
-MIT © [Mustafa Sarac](https://mustafasarac.com)
+MIT © Mustafa Sarac
 
 ---
 
