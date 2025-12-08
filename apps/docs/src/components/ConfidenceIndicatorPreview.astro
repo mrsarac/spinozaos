@@ -1,0 +1,168 @@
+---
+// ConfidenceIndicatorPreview.astro - Static preview of ConfidenceIndicator
+---
+
+<div class="confidence-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Confidence Levels</div>
+    <div class="preview-column">
+      <div class="confidence-item">
+        <div class="confidence-bar">
+          <div class="confidence-fill confidence-low" style="width: 25%"></div>
+        </div>
+        <span class="confidence-value confidence-low-text">25%</span>
+        <span class="confidence-label">Low</span>
+      </div>
+      <div class="confidence-item">
+        <div class="confidence-bar">
+          <div class="confidence-fill confidence-medium" style="width: 50%"></div>
+        </div>
+        <span class="confidence-value confidence-medium-text">50%</span>
+        <span class="confidence-label">Medium</span>
+      </div>
+      <div class="confidence-item">
+        <div class="confidence-bar">
+          <div class="confidence-fill confidence-high" style="width: 75%"></div>
+        </div>
+        <span class="confidence-value confidence-high-text">75%</span>
+        <span class="confidence-label">High</span>
+      </div>
+      <div class="confidence-item">
+        <div class="confidence-bar">
+          <div class="confidence-fill confidence-certain" style="width: 95%"></div>
+        </div>
+        <span class="confidence-value confidence-certain-text">95%</span>
+        <span class="confidence-label">Certain</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Compact Display</div>
+    <div class="preview-row">
+      <div class="confidence-compact confidence-low-text">
+        <span class="confidence-dot confidence-low-dot"></span>
+        25%
+      </div>
+      <div class="confidence-compact confidence-medium-text">
+        <span class="confidence-dot confidence-medium-dot"></span>
+        50%
+      </div>
+      <div class="confidence-compact confidence-high-text">
+        <span class="confidence-dot confidence-high-dot"></span>
+        75%
+      </div>
+      <div class="confidence-compact confidence-certain-text">
+        <span class="confidence-dot confidence-certain-dot"></span>
+        95%
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .confidence-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 300px;
+  }
+
+  .preview-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .confidence-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .confidence-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .confidence-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+  }
+
+  .confidence-low { background: #ef4444; }
+  .confidence-medium { background: #f59e0b; }
+  .confidence-high { background: #22c55e; }
+  .confidence-certain { background: #fbbf24; box-shadow: 0 0 8px rgba(251, 191, 36, 0.5); }
+
+  .confidence-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    width: 36px;
+    text-align: right;
+  }
+
+  .confidence-low-text { color: #ef4444; }
+  .confidence-medium-text { color: #f59e0b; }
+  .confidence-high-text { color: #22c55e; }
+  .confidence-certain-text { color: #fbbf24; }
+
+  .confidence-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    color: #64748b;
+    width: 60px;
+  }
+
+  .confidence-compact {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .confidence-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .confidence-low-dot { background: #ef4444; }
+  .confidence-medium-dot { background: #f59e0b; }
+  .confidence-high-dot { background: #22c55e; }
+  .confidence-certain-dot { background: #fbbf24; box-shadow: 0 0 6px rgba(251, 191, 36, 0.5); }
+</style>

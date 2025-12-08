@@ -1,0 +1,176 @@
+---
+// StatCardPreview.astro - Static preview of StatCard components
+---
+
+<div class="statcard-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Stat Cards</div>
+    <div class="preview-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Users</div>
+        <div class="stat-value">12,847</div>
+        <div class="stat-change stat-positive">+12.5%</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Revenue</div>
+        <div class="stat-value stat-value-yellow">$84.2K</div>
+        <div class="stat-change stat-positive">+8.2%</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Bounce Rate</div>
+        <div class="stat-value">32.1%</div>
+        <div class="stat-change stat-negative">-4.3%</div>
+      </div>
+      <div class="stat-card stat-card-oracle">
+        <div class="stat-label">Oracle Score</div>
+        <div class="stat-value stat-value-oracle">94.7</div>
+        <div class="stat-sublabel">Confidence Level</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Compact Stats</div>
+    <div class="preview-row">
+      <div class="quick-stat">
+        <span class="quick-label">Active</span>
+        <span class="quick-value">1,284</span>
+      </div>
+      <div class="quick-stat">
+        <span class="quick-label">Pending</span>
+        <span class="quick-value quick-value-warning">47</span>
+      </div>
+      <div class="quick-stat">
+        <span class="quick-label">Failed</span>
+        <span class="quick-value quick-value-error">3</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .statcard-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .preview-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+
+  .stat-card-oracle {
+    background: rgba(139, 92, 246, 0.05);
+    border-color: rgba(139, 92, 246, 0.2);
+  }
+
+  .stat-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .stat-value-yellow {
+    color: #fbbf24;
+  }
+
+  .stat-value-oracle {
+    color: #8b5cf6;
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  }
+
+  .stat-change {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-top: 0.375rem;
+  }
+
+  .stat-positive {
+    color: #22c55e;
+  }
+
+  .stat-negative {
+    color: #ef4444;
+  }
+
+  .stat-sublabel {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.625rem;
+    color: #64748b;
+    margin-top: 0.375rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Quick Stats */
+  .quick-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .quick-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+
+  .quick-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .quick-value-warning {
+    color: #f59e0b;
+  }
+
+  .quick-value-error {
+    color: #ef4444;
+  }
+</style>

@@ -1,0 +1,160 @@
+---
+// AvatarPreview.astro - Static preview of Avatar component
+---
+
+<div class="avatar-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Sizes</div>
+    <div class="preview-row">
+      <div class="avatar avatar-sm">
+        <span class="avatar-fallback">SM</span>
+      </div>
+      <div class="avatar avatar-md">
+        <span class="avatar-fallback">MD</span>
+      </div>
+      <div class="avatar avatar-lg">
+        <span class="avatar-fallback">LG</span>
+      </div>
+      <div class="avatar avatar-xl">
+        <span class="avatar-fallback">XL</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">With Status</div>
+    <div class="preview-row">
+      <div class="avatar avatar-md avatar-with-status">
+        <span class="avatar-fallback">JD</span>
+        <span class="avatar-status status-online"></span>
+      </div>
+      <div class="avatar avatar-md avatar-with-status">
+        <span class="avatar-fallback">AB</span>
+        <span class="avatar-status status-away"></span>
+      </div>
+      <div class="avatar avatar-md avatar-with-status">
+        <span class="avatar-fallback">CD</span>
+        <span class="avatar-status status-offline"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Avatar Group</div>
+    <div class="avatar-group">
+      <div class="avatar avatar-md">
+        <span class="avatar-fallback">A</span>
+      </div>
+      <div class="avatar avatar-md">
+        <span class="avatar-fallback">B</span>
+      </div>
+      <div class="avatar avatar-md">
+        <span class="avatar-fallback">C</span>
+      </div>
+      <div class="avatar avatar-md avatar-more">
+        <span class="avatar-fallback">+3</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .avatar-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .avatar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    overflow: hidden;
+  }
+
+  .avatar-sm { width: 32px; height: 32px; }
+  .avatar-md { width: 40px; height: 40px; }
+  .avatar-lg { width: 48px; height: 48px; }
+  .avatar-xl { width: 64px; height: 64px; }
+
+  .avatar-fallback {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    color: #020617;
+  }
+
+  .avatar-sm .avatar-fallback { font-size: 0.625rem; }
+  .avatar-md .avatar-fallback { font-size: 0.75rem; }
+  .avatar-lg .avatar-fallback { font-size: 0.875rem; }
+  .avatar-xl .avatar-fallback { font-size: 1.125rem; }
+
+  .avatar-with-status {
+    overflow: visible;
+  }
+
+  .avatar-status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #020617;
+  }
+
+  .status-online { background: #22c55e; }
+  .status-away { background: #f59e0b; }
+  .status-offline { background: #64748b; }
+
+  .avatar-group {
+    display: flex;
+  }
+
+  .avatar-group .avatar {
+    margin-left: -8px;
+    border: 2px solid #020617;
+  }
+
+  .avatar-group .avatar:first-child {
+    margin-left: 0;
+  }
+
+  .avatar-more {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .avatar-more .avatar-fallback {
+    color: #94a3b8;
+    font-size: 0.625rem;
+  }
+</style>

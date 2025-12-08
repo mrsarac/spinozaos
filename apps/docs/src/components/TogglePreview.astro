@@ -1,0 +1,151 @@
+---
+// TogglePreview.astro - Static preview of Toggle variants
+---
+
+<div class="toggle-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">States</div>
+    <div class="preview-column">
+      <div class="toggle-item">
+        <span class="toggle toggle-off">
+          <span class="toggle-thumb"></span>
+        </span>
+        <span class="toggle-text">Off</span>
+      </div>
+      <div class="toggle-item">
+        <span class="toggle toggle-on">
+          <span class="toggle-thumb"></span>
+        </span>
+        <span class="toggle-text">On</span>
+      </div>
+      <div class="toggle-item toggle-disabled">
+        <span class="toggle toggle-off">
+          <span class="toggle-thumb"></span>
+        </span>
+        <span class="toggle-text">Disabled</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Sizes</div>
+    <div class="preview-row">
+      <div class="toggle-item">
+        <span class="toggle toggle-on toggle-sm">
+          <span class="toggle-thumb"></span>
+        </span>
+        <span class="toggle-text">Small</span>
+      </div>
+      <div class="toggle-item">
+        <span class="toggle toggle-on toggle-md">
+          <span class="toggle-thumb"></span>
+        </span>
+        <span class="toggle-text">Medium</span>
+      </div>
+      <div class="toggle-item">
+        <span class="toggle toggle-on toggle-lg">
+          <span class="toggle-thumb"></span>
+        </span>
+        <span class="toggle-text">Large</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .toggle-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .preview-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .toggle-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .toggle {
+    position: relative;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .toggle-sm { width: 36px; height: 20px; }
+  .toggle-md { width: 44px; height: 24px; }
+  .toggle-lg { width: 52px; height: 28px; }
+  .toggle:not(.toggle-sm):not(.toggle-lg) { width: 44px; height: 24px; }
+
+  .toggle-off {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .toggle-on {
+    background: #fbbf24;
+  }
+
+  .toggle-thumb {
+    position: absolute;
+    top: 2px;
+    background: white;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .toggle-sm .toggle-thumb { width: 16px; height: 16px; }
+  .toggle-md .toggle-thumb { width: 20px; height: 20px; }
+  .toggle-lg .toggle-thumb { width: 24px; height: 24px; }
+  .toggle:not(.toggle-sm):not(.toggle-lg) .toggle-thumb { width: 20px; height: 20px; }
+
+  .toggle-off .toggle-thumb { left: 2px; }
+  .toggle-on.toggle-sm .toggle-thumb { left: 18px; }
+  .toggle-on.toggle-md .toggle-thumb { left: 22px; }
+  .toggle-on.toggle-lg .toggle-thumb { left: 26px; }
+  .toggle-on:not(.toggle-sm):not(.toggle-lg) .toggle-thumb { left: 22px; }
+
+  .toggle-text {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.875rem;
+    color: #e2e8f0;
+  }
+
+  .toggle-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>

@@ -1,0 +1,219 @@
+---
+// ProgressPreview.astro - Static preview of Progress and loading components
+---
+
+<div class="progress-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Progress Bar</div>
+    <div class="preview-column">
+      <div class="progress-item">
+        <span class="progress-value">25%</span>
+        <div class="progress-track">
+          <div class="progress-bar" style="width: 25%"></div>
+        </div>
+      </div>
+      <div class="progress-item">
+        <span class="progress-value">60%</span>
+        <div class="progress-track">
+          <div class="progress-bar" style="width: 60%"></div>
+        </div>
+      </div>
+      <div class="progress-item">
+        <span class="progress-value">100%</span>
+        <div class="progress-track">
+          <div class="progress-bar progress-complete" style="width: 100%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Spinners</div>
+    <div class="preview-row">
+      <div class="spinner spinner-sm"></div>
+      <div class="spinner spinner-md"></div>
+      <div class="spinner spinner-lg"></div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Loading Dots</div>
+    <div class="preview-row">
+      <div class="loading-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Skeleton</div>
+    <div class="preview-column">
+      <div class="skeleton skeleton-text"></div>
+      <div class="skeleton skeleton-text skeleton-short"></div>
+      <div class="skeleton-row">
+        <div class="skeleton skeleton-avatar"></div>
+        <div class="skeleton-lines">
+          <div class="skeleton skeleton-text"></div>
+          <div class="skeleton skeleton-text skeleton-short"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .progress-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 300px;
+  }
+
+  .preview-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  /* Progress Bar */
+  .progress-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .progress-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    width: 40px;
+  }
+
+  .progress-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: #fbbf24;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+
+  .progress-complete {
+    background: #22c55e;
+  }
+
+  /* Spinner */
+  .spinner {
+    border-radius: 50%;
+    border: 2px solid rgba(251, 191, 36, 0.2);
+    border-top-color: #fbbf24;
+    animation: spin 0.8s linear infinite;
+  }
+
+  .spinner-sm { width: 20px; height: 20px; }
+  .spinner-md { width: 32px; height: 32px; }
+  .spinner-lg { width: 48px; height: 48px; }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Loading Dots */
+  .loading-dots {
+    display: flex;
+    gap: 0.375rem;
+  }
+
+  .loading-dots .dot {
+    width: 8px;
+    height: 8px;
+    background: #fbbf24;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out both;
+  }
+
+  .loading-dots .dot:nth-child(1) { animation-delay: -0.32s; }
+  .loading-dots .dot:nth-child(2) { animation-delay: -0.16s; }
+
+  @keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+  }
+
+  /* Skeleton */
+  .skeleton {
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+  }
+
+  .skeleton-text {
+    height: 16px;
+    width: 100%;
+  }
+
+  .skeleton-short {
+    width: 60%;
+  }
+
+  .skeleton-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .skeleton-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .skeleton-lines {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+</style>

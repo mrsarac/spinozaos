@@ -1,0 +1,145 @@
+---
+// CheckboxPreview.astro - Static preview of Checkbox variants
+---
+
+<div class="checkbox-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">States</div>
+    <div class="preview-column">
+      <label class="checkbox-item">
+        <span class="checkbox checkbox-unchecked"></span>
+        <span class="checkbox-text">Unchecked</span>
+      </label>
+      <label class="checkbox-item">
+        <span class="checkbox checkbox-checked">
+          <svg viewBox="0 0 12 12" fill="none">
+            <path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="checkbox-text">Checked</span>
+      </label>
+      <label class="checkbox-item checkbox-disabled">
+        <span class="checkbox checkbox-unchecked"></span>
+        <span class="checkbox-text">Disabled</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Sizes</div>
+    <div class="preview-row">
+      <label class="checkbox-item">
+        <span class="checkbox checkbox-checked checkbox-sm">
+          <svg viewBox="0 0 12 12" fill="none">
+            <path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="checkbox-text">Small</span>
+      </label>
+      <label class="checkbox-item">
+        <span class="checkbox checkbox-checked checkbox-md">
+          <svg viewBox="0 0 12 12" fill="none">
+            <path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="checkbox-text">Medium</span>
+      </label>
+      <label class="checkbox-item">
+        <span class="checkbox checkbox-checked checkbox-lg">
+          <svg viewBox="0 0 12 12" fill="none">
+            <path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="checkbox-text">Large</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<style>
+  .checkbox-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .preview-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .checkbox-sm { width: 16px; height: 16px; }
+  .checkbox-md { width: 20px; height: 20px; }
+  .checkbox-lg { width: 24px; height: 24px; }
+  .checkbox:not(.checkbox-sm):not(.checkbox-lg) { width: 20px; height: 20px; }
+
+  .checkbox-unchecked {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .checkbox-checked {
+    background: #fbbf24;
+    border: 2px solid #fbbf24;
+    color: #020617;
+  }
+
+  .checkbox svg {
+    width: 70%;
+    height: 70%;
+  }
+
+  .checkbox-text {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.875rem;
+    color: #e2e8f0;
+  }
+
+  .checkbox-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>

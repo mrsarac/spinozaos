@@ -1,0 +1,156 @@
+---
+// TabsPreview.astro - Static preview of Tabs component
+---
+
+<div class="tabs-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Default Tabs</div>
+    <div class="tabs">
+      <div class="tabs-list">
+        <button class="tab tab-active">Overview</button>
+        <button class="tab">Analytics</button>
+        <button class="tab">Reports</button>
+        <button class="tab">Settings</button>
+      </div>
+      <div class="tabs-content">
+        <p>Overview content goes here. This tab is currently active.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Pill Variant</div>
+    <div class="tabs tabs-pill">
+      <div class="tabs-list tabs-list-pill">
+        <button class="tab tab-pill tab-active">Day</button>
+        <button class="tab tab-pill">Week</button>
+        <button class="tab tab-pill">Month</button>
+        <button class="tab tab-pill">Year</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Underline Variant</div>
+    <div class="tabs">
+      <div class="tabs-list tabs-list-underline">
+        <button class="tab tab-underline tab-active">All</button>
+        <button class="tab tab-underline">Active</button>
+        <button class="tab tab-underline">Completed</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .tabs-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .tabs {
+    width: 100%;
+  }
+
+  .tabs-list {
+    display: flex;
+    gap: 0.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+  }
+
+  .tab {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+
+  .tab:hover {
+    color: #e2e8f0;
+  }
+
+  .tab.tab-active {
+    color: #fbbf24;
+  }
+
+  .tab.tab-active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #fbbf24;
+  }
+
+  .tabs-content {
+    padding: 0.5rem 0;
+  }
+
+  .tabs-content p {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.875rem;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  /* Pill variant */
+  .tabs-list-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.25rem;
+    border-bottom: none;
+    width: fit-content;
+  }
+
+  .tab-pill {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+  }
+
+  .tab-pill.tab-active {
+    background: #fbbf24;
+    color: #020617;
+  }
+
+  .tab-pill.tab-active::after {
+    display: none;
+  }
+
+  /* Underline variant */
+  .tabs-list-underline {
+    gap: 1.5rem;
+  }
+
+  .tab-underline {
+    padding: 0.75rem 0;
+  }
+</style>

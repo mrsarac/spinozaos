@@ -1,0 +1,133 @@
+---
+// TextareaPreview.astro - Static preview of Textarea component
+---
+
+<div class="textarea-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Variants</div>
+    <div class="preview-column">
+      <textarea class="textarea textarea-default" placeholder="Default textarea..." rows="3"></textarea>
+      <textarea class="textarea textarea-filled" placeholder="Filled variant..." rows="3"></textarea>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">States</div>
+    <div class="preview-column">
+      <div class="textarea-group">
+        <label class="textarea-label">With Label</label>
+        <textarea class="textarea textarea-default" placeholder="Enter description..." rows="2"></textarea>
+      </div>
+      <div class="textarea-group">
+        <label class="textarea-label">Error State</label>
+        <textarea class="textarea textarea-error" rows="2">Invalid content</textarea>
+        <span class="textarea-error-text">Please provide valid input</span>
+      </div>
+      <div class="textarea-group">
+        <label class="textarea-label">Disabled</label>
+        <textarea class="textarea textarea-default textarea-disabled" placeholder="Disabled" rows="2" disabled></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .textarea-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 320px;
+  }
+
+  .textarea-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .textarea-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #94a3b8;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .textarea-error-text {
+    font-size: 0.7rem;
+    color: #ef4444;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .textarea {
+    width: 100%;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.875rem;
+    padding: 12px 14px;
+    border-radius: 0;
+    resize: vertical;
+    transition: all 0.2s ease;
+    outline: none;
+  }
+
+  .textarea-default {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+
+  .textarea-default::placeholder {
+    color: #64748b;
+  }
+
+  .textarea-default:focus {
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.3);
+  }
+
+  .textarea-filled {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid transparent;
+    color: #ffffff;
+  }
+
+  .textarea-filled::placeholder {
+    color: #64748b;
+  }
+
+  .textarea-error {
+    background: transparent;
+    border: 1px solid #ef4444;
+    color: #ffffff;
+  }
+
+  .textarea-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>

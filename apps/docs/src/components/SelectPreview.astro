@@ -1,0 +1,137 @@
+---
+// SelectPreview.astro - Static preview of Select component
+---
+
+<div class="select-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Variants</div>
+    <div class="preview-column">
+      <div class="select select-default">
+        <span class="select-value">Select an option</span>
+        <svg class="select-icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="select select-filled">
+        <span class="select-value">Selected value</span>
+        <svg class="select-icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Sizes</div>
+    <div class="preview-column">
+      <div class="select select-default select-sm">
+        <span class="select-value">Small</span>
+        <svg class="select-icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="select select-default select-md">
+        <span class="select-value">Medium</span>
+        <svg class="select-icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="select select-default select-lg">
+        <span class="select-value">Large</span>
+        <svg class="select-icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">States</div>
+    <div class="preview-column">
+      <div class="select select-default select-disabled">
+        <span class="select-value">Disabled</span>
+        <svg class="select-icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .select-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 280px;
+  }
+
+  .select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-family: 'Inter', system-ui, sans-serif;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .select-sm { height: 36px; padding: 0 12px; font-size: 0.8rem; }
+  .select-md { height: 40px; padding: 0 14px; font-size: 0.875rem; }
+  .select-lg { height: 48px; padding: 0 16px; font-size: 1rem; }
+  .select:not(.select-sm):not(.select-lg) { height: 40px; padding: 0 14px; font-size: 0.875rem; }
+
+  .select-default {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e2e8f0;
+  }
+
+  .select-filled {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid transparent;
+    color: #ffffff;
+  }
+
+  .select-value {
+    flex: 1;
+  }
+
+  .select-icon {
+    width: 16px;
+    height: 16px;
+    color: #64748b;
+  }
+
+  .select-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>

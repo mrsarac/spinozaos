@@ -1,0 +1,139 @@
+---
+// ToastPreview.astro - Static preview of Toast variants
+---
+
+<div class="toast-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Variants</div>
+    <div class="preview-column">
+      <div class="toast toast-default">
+        <span class="toast-message">Default notification message</span>
+        <button class="toast-close">&times;</button>
+      </div>
+      <div class="toast toast-success">
+        <span class="toast-icon">✓</span>
+        <span class="toast-message">Success! Operation completed.</span>
+        <button class="toast-close">&times;</button>
+      </div>
+      <div class="toast toast-error">
+        <span class="toast-icon">!</span>
+        <span class="toast-message">Error! Something went wrong.</span>
+        <button class="toast-close">&times;</button>
+      </div>
+      <div class="toast toast-warning">
+        <span class="toast-icon">⚠</span>
+        <span class="toast-message">Warning! Please review.</span>
+        <button class="toast-close">&times;</button>
+      </div>
+      <div class="toast toast-info">
+        <span class="toast-icon">i</span>
+        <span class="toast-message">Info: New update available.</span>
+        <button class="toast-close">&times;</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .toast-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .toast {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.875rem;
+    max-width: 400px;
+  }
+
+  .toast-default {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e2e8f0;
+  }
+
+  .toast-success {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+  }
+
+  .toast-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+  }
+
+  .toast-warning {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: #f59e0b;
+  }
+
+  .toast-info {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #3b82f6;
+  }
+
+  .toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+
+  .toast-message {
+    flex: 1;
+  }
+
+  .toast-close {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.25rem;
+    cursor: pointer;
+    opacity: 0.6;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .toast-close:hover {
+    opacity: 1;
+  }
+</style>

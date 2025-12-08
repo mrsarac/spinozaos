@@ -1,0 +1,142 @@
+---
+// EmptyStatePreview.astro - Static preview of EmptyState components
+---
+
+<div class="emptystate-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Empty States</div>
+    <div class="preview-grid">
+      <div class="empty-state">
+        <div class="empty-icon">📭</div>
+        <div class="empty-title">No Results</div>
+        <div class="empty-description">Try adjusting your search or filters</div>
+        <button class="empty-action">Clear Filters</button>
+      </div>
+      <div class="empty-state empty-state-error">
+        <div class="empty-icon">⚠️</div>
+        <div class="empty-title">Something went wrong</div>
+        <div class="empty-description">We couldn't load the data</div>
+        <button class="empty-action empty-action-error">Retry</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Variants</div>
+    <div class="preview-row">
+      <span class="variant-badge">NoResults</span>
+      <span class="variant-badge">NoData</span>
+      <span class="variant-badge">ErrorState</span>
+      <span class="variant-badge">NotFound</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .emptystate-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .preview-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .empty-state {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .empty-state-error {
+    border-color: rgba(239, 68, 68, 0.2);
+    background: rgba(239, 68, 68, 0.02);
+  }
+
+  .empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .empty-title {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .empty-description {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+  }
+
+  .empty-action {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(251, 191, 36, 0.5);
+    border-radius: 0;
+    color: #fbbf24;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .empty-action:hover {
+    background: rgba(251, 191, 36, 0.1);
+  }
+
+  .empty-action-error {
+    border-color: rgba(239, 68, 68, 0.5);
+    color: #ef4444;
+  }
+
+  .empty-action-error:hover {
+    background: rgba(239, 68, 68, 0.1);
+  }
+
+  .variant-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: #94a3b8;
+  }
+</style>

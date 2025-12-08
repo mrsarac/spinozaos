@@ -1,0 +1,118 @@
+---
+// TextPreview.astro - Static preview of Text variants
+---
+
+<div class="text-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Typography Scale</div>
+    <div class="preview-column">
+      <span class="text-display">Display</span>
+      <span class="text-h1">Heading 1</span>
+      <span class="text-h2">Heading 2</span>
+      <span class="text-h3">Heading 3</span>
+      <span class="text-body">Body text for paragraphs and content</span>
+      <span class="text-small">Small text for captions</span>
+      <span class="text-label">LABEL TEXT</span>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Colors</div>
+    <div class="preview-column">
+      <span class="text-body text-default">Default text color</span>
+      <span class="text-body text-muted">Muted text color</span>
+      <span class="text-body text-yellow">Yellow accent text</span>
+      <span class="text-body text-oracle">Oracle purple text</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .text-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Typography variants */
+  .text-display {
+    font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fbbf24;
+    line-height: 1.1;
+  }
+
+  .text-h1 {
+    font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+    font-size: 2.25rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .text-h2 {
+    font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .text-h3 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .text-body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 1rem;
+    color: #e2e8f0;
+  }
+
+  .text-small {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.875rem;
+    color: #94a3b8;
+  }
+
+  .text-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: #64748b;
+  }
+
+  /* Colors */
+  .text-default { color: #e2e8f0; }
+  .text-muted { color: #64748b; }
+  .text-yellow { color: #fbbf24; }
+  .text-oracle { color: #8b5cf6; }
+</style>
