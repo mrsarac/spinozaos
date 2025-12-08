@@ -30,6 +30,9 @@ export const colors = {
     yellowDim: '#b45309',
     gold: '#d97706',
     amber: '#f59e0b',
+    // New from Substance - Future/Tech accent
+    indigo: '#6366f1',
+    indigoDim: '#4f46e5',
   },
 
   // Semantic
@@ -65,6 +68,12 @@ export const colors = {
 
   // Decorative
   teal: '#14b8a6',
+
+  // Glitch Effect (from Substance)
+  glitch: {
+    cyan: '#00FFF9',
+    magenta: '#FF00C1',
+  },
 } as const;
 
 // ============================================
@@ -73,7 +82,8 @@ export const colors = {
 
 export const typography = {
   fontFamily: {
-    serif: "'Playfair Display', Georgia, serif",
+    // Cinzel - Intelligence agency aesthetic, philosophical weight
+    serif: "'Cinzel', 'Playfair Display', Georgia, serif",
     sans: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
     mono: "'JetBrains Mono', 'SF Mono', Consolas, monospace",
   },
@@ -219,6 +229,14 @@ export const shadows = {
     cosmic: '0 0 20px rgba(168, 85, 247, 0.4)',
     topSecret: '0 0 20px rgba(239, 68, 68, 0.4)',
     teal: '0 0 20px rgba(20, 184, 166, 0.3)',
+    // New from Substance
+    indigo: '0 0 20px rgba(99, 102, 241, 0.3)',
+  },
+  // Text glow effects (Substance style)
+  textGlow: {
+    yellow: '0 0 10px rgba(251, 191, 36, 0.5), 0 0 20px rgba(251, 191, 36, 0.3)',
+    indigo: '0 0 10px rgba(99, 102, 241, 0.5), 0 0 20px rgba(99, 102, 241, 0.3)',
+    cyan: '0 0 10px rgba(0, 255, 249, 0.5), 0 0 20px rgba(0, 255, 249, 0.3)',
   },
 } as const;
 

@@ -1,5 +1,6 @@
-// SpinozaOS React Components v0.1.0
+// SpinozaOS React Components v0.2.0
 // "More Geometrico" - React components for the age of superintelligence
+// Updated with Substance UI patterns
 
 // Utils
 export { cn } from './utils';
@@ -9,6 +10,9 @@ export { Button, buttonVariants, type ButtonProps } from './components/Button';
 
 // Components - Typography
 export { Text, textVariants, type TextProps } from './components/Text';
+
+// Components - Effects (Substance)
+export { GlitchText, glitchVariants, type GlitchTextProps } from './components/GlitchText';
 
 // Components - Layout
 export { Card, cardVariants, type CardProps } from './components/Card';
