@@ -1,0 +1,168 @@
+---
+// BadgePreview.astro - Static preview of Badge variants
+---
+
+<div class="badge-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Variants</div>
+    <div class="preview-row">
+      <span class="badge badge-default">Default</span>
+      <span class="badge badge-success">Success</span>
+      <span class="badge badge-warning">Warning</span>
+      <span class="badge badge-error">Error</span>
+      <span class="badge badge-oracle">Oracle</span>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Sizes</div>
+    <div class="preview-row">
+      <span class="badge badge-default badge-sm">Small</span>
+      <span class="badge badge-default badge-md">Medium</span>
+      <span class="badge badge-default badge-lg">Large</span>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">With Dot</div>
+    <div class="preview-row">
+      <span class="badge badge-success badge-dot"><span class="dot success-dot"></span>Online</span>
+      <span class="badge badge-warning badge-dot"><span class="dot warning-dot"></span>Pending</span>
+      <span class="badge badge-error badge-dot"><span class="dot error-dot"></span>Offline</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .badge-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  /* Base Badge Styles */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 500;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+
+  /* Sizes */
+  .badge-sm {
+    height: 20px;
+    padding: 0 8px;
+    font-size: 0.625rem;
+  }
+
+  .badge-md {
+    height: 24px;
+    padding: 0 10px;
+    font-size: 0.75rem;
+  }
+
+  .badge-lg {
+    height: 28px;
+    padding: 0 12px;
+    font-size: 0.8rem;
+  }
+
+  .badge:not(.badge-sm):not(.badge-lg) {
+    height: 24px;
+    padding: 0 10px;
+    font-size: 0.75rem;
+  }
+
+  /* Variants */
+  .badge-default {
+    background: rgba(251, 191, 36, 0.1);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+  }
+
+  .badge-success {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .badge-warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+
+  .badge-error {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .badge-oracle {
+    background: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+  }
+
+  /* Dot */
+  .badge-dot {
+    padding-left: 8px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  .success-dot {
+    background: #22c55e;
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+  }
+
+  .warning-dot {
+    background: #f59e0b;
+    box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+  }
+
+  .error-dot {
+    background: #ef4444;
+    box-shadow: 0 0 6px rgba(239, 68, 68, 0.5);
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+</style>

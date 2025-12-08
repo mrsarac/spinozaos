@@ -1,0 +1,136 @@
+---
+// CardPreview.astro - Static preview of Card variants
+---
+
+<div class="card-preview not-content">
+  <div class="preview-section">
+    <div class="preview-label">Variants</div>
+    <div class="preview-grid">
+      <div class="card card-default">
+        <div class="card-title">Default Card</div>
+        <div class="card-body">Standard card with subtle border</div>
+      </div>
+      <div class="card card-elevated">
+        <div class="card-title">Elevated Card</div>
+        <div class="card-body">Card with shadow effect</div>
+      </div>
+      <div class="card card-outlined">
+        <div class="card-title">Outlined Card</div>
+        <div class="card-body">Card with visible border</div>
+      </div>
+      <div class="card card-ghost">
+        <div class="card-title">Ghost Card</div>
+        <div class="card-body">Transparent background</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-section">
+    <div class="preview-label">Interactive</div>
+    <div class="preview-grid">
+      <div class="card card-default card-interactive">
+        <div class="card-title">Hover Me</div>
+        <div class="card-body">Interactive card with hover effect</div>
+      </div>
+      <div class="card card-oracle">
+        <div class="card-title">Oracle Card</div>
+        <div class="card-body">Premium purple gradient glow</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card-preview {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .preview-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .preview-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .preview-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  /* Base Card Styles */
+  .card {
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .card-title {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    line-height: 1.4;
+  }
+
+  /* Variants */
+  .card-default {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .card-elevated {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-outlined {
+    background: transparent;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+  }
+
+  .card-ghost {
+    background: transparent;
+    border: 1px solid transparent;
+  }
+
+  .card-oracle {
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+  }
+
+  /* Interactive */
+  .card-interactive {
+    cursor: pointer;
+  }
+
+  .card-interactive:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(251, 191, 36, 0.3);
+    transform: translateY(-2px);
+  }
+</style>
