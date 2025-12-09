@@ -3,8 +3,20 @@
 > **Design System for the Age of Superintelligence**
 > *"More Geometrico"*
 
-[![npm version](https://img.shields.io/npm/v/@spinozaos/tokens.svg)](https://www.npmjs.com/package/@spinozaos/tokens)
+[![npm version](https://img.shields.io/npm/v/@spinozaos/react.svg)](https://www.npmjs.com/package/@spinozaos/react)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Release](https://img.shields.io/github/v/release/mrsarac/spinozaos)](https://github.com/mrsarac/spinozaos/releases)
+
+## Live Demos
+
+> See SpinozaOS in action across different use cases
+
+| Demo | Description | Status |
+|------|-------------|--------|
+| [Showcase Gallery](https://showcase.spinozaos.mustafasarac.com) | Interactive component gallery | Coming Soon |
+| [AGI Dashboard](https://dashboard.spinozaos.mustafasarac.com) | Bloomberg-style analytics | Coming Soon |
+| [AI Chat](https://chat.spinozaos.mustafasarac.com) | Conversational UI demo | Coming Soon |
+| [Documentation](https://docs-spinozaos.mustafasarac.com) | Full documentation | Coming Soon |
 
 ---
 
@@ -35,10 +47,10 @@ SpinozaOS = Bloomberg Terminal × Sci-Fi UI × Spinoza Philosophy
 
 | Package | Description | Version |
 |---------|-------------|---------|
-| `@spinozaos/tokens` | Design tokens (colors, typography, spacing) | 0.2.0 |
-| `@spinozaos/react` | React components (21 components) | 0.2.0 |
-| `@spinozaos/motion` | Framer Motion presets | 0.2.0 |
-| `@spinozaos/tailwind` | Tailwind CSS preset | 0.2.0 |
+| [`@spinozaos/tokens`](https://www.npmjs.com/package/@spinozaos/tokens) | Design tokens (colors, typography, spacing) | 1.0.0 |
+| [`@spinozaos/react`](https://www.npmjs.com/package/@spinozaos/react) | React components (25 components) | 1.0.0 |
+| [`@spinozaos/motion`](https://www.npmjs.com/package/@spinozaos/motion) | Framer Motion presets | 1.0.0 |
+| [`@spinozaos/tailwind`](https://www.npmjs.com/package/@spinozaos/tailwind) | Tailwind CSS preset | 1.0.0 |
 
 ---
 
@@ -214,12 +226,15 @@ spinozaos/
 ## Roadmap
 
 - [x] Project setup
-- [x] NPM publish (v0.2.0)
-- [x] 21 React components
-- [x] 145 unit tests
+- [x] NPM publish (v1.0.0)
+- [x] 25 React components
+- [x] 564 unit tests
 - [x] CI/CD pipeline
-- [ ] v1.0 stable release
-- [ ] Storybook
+- [x] v1.0 stable release
+- [x] WCAG 2.1 AA accessibility
+- [ ] Showcase Gallery
+- [ ] Live Demo Apps (AGI Dashboard, AI Chat, etc.)
+- [ ] Storybook deployment
 
 ---
 
