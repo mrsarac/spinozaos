@@ -73,3 +73,49 @@ body {
 .glow-yellow-intense {
   box-shadow: 0 0 40px rgba(251, 191, 36, 0.5);
 }
+
+/* Glitch animation keyframes */
+@keyframes glitch-anim-1 {
+  0%, 100% { clip-path: inset(0 0 90% 0); transform: translateX(0); }
+  20% { clip-path: inset(20% 0 60% 0); transform: translateX(-2px); }
+  40% { clip-path: inset(40% 0 30% 0); transform: translateX(2px); }
+  60% { clip-path: inset(60% 0 10% 0); transform: translateX(-1px); }
+  80% { clip-path: inset(80% 0 0 0); transform: translateX(1px); }
+}
+
+@keyframes glitch-anim-2 {
+  0%, 100% { clip-path: inset(90% 0 0 0); transform: translateX(0); }
+  25% { clip-path: inset(60% 0 20% 0); transform: translateX(2px); }
+  50% { clip-path: inset(30% 0 40% 0); transform: translateX(-2px); }
+  75% { clip-path: inset(10% 0 60% 0); transform: translateX(1px); }
+}
+
+/* Scan line animation */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.animate-scan {
+  animation: scan 8s linear infinite;
+}
+
+/* Pulse glow animation */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(251, 191, 36, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(251, 191, 36, 0.4); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
