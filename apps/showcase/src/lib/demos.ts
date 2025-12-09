@@ -2,7 +2,7 @@ export interface Demo {
   id: string;
   title: string;
   description: string;
-  category: 'dashboard' | 'chat' | 'landing' | 'dataviz' | 'forms';
+  category: 'dashboard' | 'chat' | 'landing' | 'dataviz' | 'forms' | 'trading';
   status: 'live' | 'coming-soon' | 'beta';
   href: string;
   components: string[];
@@ -11,12 +11,21 @@ export interface Demo {
 
 export const demos: Demo[] = [
   {
+    id: 'trading-terminal',
+    title: 'AGI Prediction Markets',
+    description: 'Bloomberg-style trading terminal for AGI timeline predictions with real-time charts, order book, and terminal CLI.',
+    category: 'trading',
+    status: 'live',
+    href: 'http://localhost:3102',
+    components: ['MarketCard', 'PriceChart', 'OrderBook', 'TradeHistory', 'Terminal', 'NewsFeed', 'MarketTicker'],
+  },
+  {
     id: 'agi-dashboard',
     title: 'AGI Dashboard',
     description: 'Bloomberg Terminal-style analytics dashboard for AI predictions and model monitoring.',
     category: 'dashboard',
-    status: 'coming-soon',
-    href: '/demos/agi-dashboard',
+    status: 'live',
+    href: 'http://localhost:3101',
     components: ['StatCard', 'Progress', 'Badge', 'Card', 'Tabs', 'ClearanceBadge'],
   },
   {
@@ -59,6 +68,7 @@ export const demos: Demo[] = [
 
 export const categories = [
   { id: 'all', label: 'All Demos' },
+  { id: 'trading', label: 'Trading' },
   { id: 'dashboard', label: 'Dashboards' },
   { id: 'chat', label: 'Chat UI' },
   { id: 'landing', label: 'Landing Pages' },
