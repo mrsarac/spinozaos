@@ -1,0 +1,39 @@
+{
+  "name": "@spinozaos-demos/agi-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@spinozaos/react": "workspace:*",
+    "@spinozaos/tokens": "workspace:*",
+    "@spinozaos/motion": "workspace:*",
+    "@spinozaos/tailwind": "workspace:*",
+    "next": "^14.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "framer-motion": "^10.18.0",
+    "lucide-react": "^0.460.0",
+    "recharts": "^2.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.3.3",
+    "tailwindcss": "^3.4.0",
+    "postcss": "^8.4.0",
+    "autoprefixer": "^10.4.0"
+  },
+  "extraction-notes": {
+    "candidates": [
+      "MetricsChart.tsx - Recharts with SpinozaOS styling",
+      "PredictionCard.tsx - AI prediction display",
+      "ActivityFeed.tsx - Real-time activity stream"
+    ]
+  }
+}
