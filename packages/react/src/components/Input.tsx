@@ -94,6 +94,7 @@ export interface InputProps
   helperText?: string;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  id?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -106,12 +107,18 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     helperText,
     leftIcon,
     rightIcon,
+    id,
     ...props
   }, ref) => {
+    const generatedId = React.useId();
+    const inputId = id || generatedId;
+    const helperId = helperText ? `${inputId}-helper` : undefined;
+    const isInvalid = state === 'error';
+
     return (
       <div className="w-full">
         {label && (
-          <label className={labelVariants({ state })}>
+          <label htmlFor={inputId} className={labelVariants({ state })}>
             {label}
           </label>
         )}
@@ -122,12 +129,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </div>
           )}
           <motion.input
+            id={inputId}
             className={cn(
               inputVariants({ variant, size, state, className }),
               leftIcon && 'pl-10',
               rightIcon && 'pr-10'
             )}
             ref={ref}
+            aria-invalid={isInvalid || undefined}
+            aria-describedby={helperId}
             whileFocus={{ scale: 1.01 }}
             transition={SPRING.tight}
             {...props}
@@ -139,7 +149,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
         </div>
         {helperText && (
-          <p className={helperTextVariants({ state })}>
+          <p id={helperId} className={helperTextVariants({ state })}>
             {helperText}
           </p>
         )}

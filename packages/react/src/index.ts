@@ -139,6 +139,8 @@ export {
   type NotFoundProps,
 } from './components/EmptyState';
 
-// Re-export tokens and motion for convenience
-export * from '@spinozaos/tokens';
-export * from '@spinozaos/motion';
+// Note: For design tokens, import from '@spinozaos/tokens'
+// For motion presets, import from '@spinozaos/motion'
+// Example:
+//   import { COLORS, TYPOGRAPHY } from '@spinozaos/tokens';
+//   import { SPRING, EASE } from '@spinozaos/motion';

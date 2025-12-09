@@ -148,15 +148,25 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
   ) => {
     const [isOpen, setIsOpen] = React.useState(false);
     const [selectedValue, setSelectedValue] = React.useState(value || defaultValue || '');
+    const [focusedIndex, setFocusedIndex] = React.useState(-1);
     const containerRef = React.useRef<HTMLDivElement>(null);
+    const listboxRef = React.useRef<HTMLDivElement>(null);
+    const triggerRef = React.useRef<HTMLButtonElement>(null);
+
+    const generatedId = React.useId();
+    const labelId = label ? `${generatedId}-label` : undefined;
+    const listboxId = `${generatedId}-listbox`;
+    const helperId = helperText ? `${generatedId}-helper` : undefined;
 
     const selectedOption = options.find((opt) => opt.value === selectedValue);
+    const enabledOptions = options.filter((opt) => !opt.disabled);
 
     const handleSelect = (optionValue: string) => {
       if (options.find((opt) => opt.value === optionValue)?.disabled) return;
       setSelectedValue(optionValue);
       onChange?.(optionValue);
       setIsOpen(false);
+      triggerRef.current?.focus();
     };
 
     React.useEffect(() => {
@@ -176,31 +186,105 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    // Reset focused index when opening
     React.useEffect(() => {
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (!isOpen) return;
+      if (isOpen) {
+        const selectedIndex = options.findIndex((opt) => opt.value === selectedValue);
+        setFocusedIndex(selectedIndex >= 0 ? selectedIndex : 0);
+      }
+    }, [isOpen, options, selectedValue]);
 
-        if (event.key === 'Escape') {
+    const handleKeyDown = (event: React.KeyboardEvent) => {
+      if (disabled) return;
+
+      switch (event.key) {
+        case 'Enter':
+        case ' ':
+          event.preventDefault();
+          if (isOpen && focusedIndex >= 0) {
+            const option = options[focusedIndex];
+            if (option && !option.disabled) {
+              handleSelect(option.value);
+            }
+          } else {
+            setIsOpen(!isOpen);
+          }
+          break;
+        case 'Escape':
+          event.preventDefault();
           setIsOpen(false);
-        }
-      };
-
-      document.addEventListener('keydown', handleKeyDown);
-      return () => document.removeEventListener('keydown', handleKeyDown);
-    }, [isOpen]);
+          triggerRef.current?.focus();
+          break;
+        case 'ArrowDown':
+          event.preventDefault();
+          if (!isOpen) {
+            setIsOpen(true);
+          } else {
+            setFocusedIndex((prev) => {
+              let next = prev + 1;
+              while (next < options.length && options[next]?.disabled) {
+                next++;
+              }
+              return next < options.length ? next : prev;
+            });
+          }
+          break;
+        case 'ArrowUp':
+          event.preventDefault();
+          if (!isOpen) {
+            setIsOpen(true);
+          } else {
+            setFocusedIndex((prev) => {
+              let next = prev - 1;
+              while (next >= 0 && options[next]?.disabled) {
+                next--;
+              }
+              return next >= 0 ? next : prev;
+            });
+          }
+          break;
+        case 'Home':
+          event.preventDefault();
+          if (isOpen) {
+            const firstEnabled = options.findIndex((opt) => !opt.disabled);
+            if (firstEnabled >= 0) setFocusedIndex(firstEnabled);
+          }
+          break;
+        case 'End':
+          event.preventDefault();
+          if (isOpen) {
+            for (let i = options.length - 1; i >= 0; i--) {
+              if (!options[i].disabled) {
+                setFocusedIndex(i);
+                break;
+              }
+            }
+          }
+          break;
+      }
+    };
 
     return (
       <div ref={ref} className={cn('w-full relative', className)}>
         {label && (
-          <label className={labelVariants({ state })}>
+          <label id={labelId} className={labelVariants({ state })}>
             {label}
           </label>
         )}
         <div ref={containerRef} className="relative">
           <motion.button
+            ref={triggerRef}
             type="button"
+            role="combobox"
+            aria-haspopup="listbox"
+            aria-expanded={isOpen}
+            aria-controls={listboxId}
+            aria-labelledby={labelId}
+            aria-describedby={helperId}
+            aria-invalid={state === 'error' || undefined}
             className={selectTriggerVariants({ variant, size, state })}
             onClick={() => !disabled && setIsOpen(!isOpen)}
+            onKeyDown={handleKeyDown}
             disabled={disabled}
             whileTap={{ scale: 0.99 }}
             transition={SPRING.tight}
@@ -214,6 +298,11 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           <AnimatePresence>
             {isOpen && (
               <motion.div
+                ref={listboxRef}
+                id={listboxId}
+                role="listbox"
+                aria-labelledby={labelId}
+                aria-activedescendant={focusedIndex >= 0 ? `${generatedId}-option-${focusedIndex}` : undefined}
                 className={cn(
                   'absolute z-50 w-full mt-1',
                   'bg-void-light rounded-lg',
@@ -227,17 +316,22 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                 exit={{ opacity: 0, y: -8 }}
                 transition={SPRING.snappy}
               >
-                {options.map((option) => (
+                {options.map((option, index) => (
                   <motion.button
                     key={option.value}
+                    id={`${generatedId}-option-${index}`}
                     type="button"
+                    role="option"
+                    aria-selected={option.value === selectedValue}
+                    aria-disabled={option.disabled}
                     className={cn(
                       'w-full px-4 py-2.5 text-sm text-left',
                       'transition-colors duration-150',
                       option.disabled
                         ? 'text-white/30 cursor-not-allowed'
                         : 'text-white hover:bg-white/5',
-                      option.value === selectedValue && 'bg-gold/10 text-gold'
+                      option.value === selectedValue && 'bg-gold/10 text-gold',
+                      focusedIndex === index && !option.disabled && 'bg-white/10'
                     )}
                     onClick={() => handleSelect(option.value)}
                     disabled={option.disabled}
@@ -252,7 +346,7 @@ const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           </AnimatePresence>
         </div>
         {helperText && (
-          <span className={helperTextVariants({ state })}>
+          <span id={helperId} className={helperTextVariants({ state })}>
             {helperText}
           </span>
         )}

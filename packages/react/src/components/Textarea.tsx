@@ -106,6 +106,7 @@ export interface TextareaProps
   helperText?: string;
   showCount?: boolean;
   maxLength?: number;
+  id?: string;
 }
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -123,6 +124,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       value,
       defaultValue,
       onChange,
+      id,
       ...props
     },
     ref
@@ -130,6 +132,11 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const [charCount, setCharCount] = React.useState(
       String(value || defaultValue || '').length
     );
+
+    const generatedId = React.useId();
+    const textareaId = id || generatedId;
+    const helperId = helperText ? `${textareaId}-helper` : undefined;
+    const isInvalid = state === 'error';
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setCharCount(e.target.value.length);
@@ -145,22 +152,25 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className={labelVariants({ state })}>
+          <label htmlFor={textareaId} className={labelVariants({ state })}>
             {label}
           </label>
         )}
         <textarea
           ref={ref}
+          id={textareaId}
           className={cn(textareaVariants({ variant, size, state, resize, className }))}
           value={value}
           defaultValue={defaultValue}
           maxLength={maxLength}
           onChange={handleChange}
+          aria-invalid={isInvalid || undefined}
+          aria-describedby={helperId}
           {...props}
         />
         <div className="flex justify-between items-center">
           {helperText && (
-            <span className={helperTextVariants({ state })}>
+            <span id={helperId} className={helperTextVariants({ state })}>
               {helperText}
             </span>
           )}

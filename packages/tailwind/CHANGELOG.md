@@ -1,5 +1,39 @@
 # @spinozaos/tailwind
 
+## 1.0.0
+
+### Major Changes
+
+- # SpinozaOS v1.0.0 - First Stable Release
+
+  ## Breaking Changes
+
+  - Removed wildcard re-exports from `@spinozaos/react` - import tokens and motion from their respective packages
+
+  ## Features
+
+  - 25 production-ready React components
+  - Complete design token system (colors, typography, spacing, effects)
+  - Spring-based motion presets with Framer Motion integration
+  - Tailwind CSS preset for dark-first design
+  - Full accessibility support (WCAG 2.1 AA)
+  - 564 unit tests
+
+  ## Components
+
+  - Actions: Button
+  - Typography: Text, GlitchText
+  - Layout: Card
+  - Forms: Input, Textarea, Select, Checkbox, Toggle
+  - Feedback: Badge, Toast, Modal, Tooltip, Progress, Spinner, LoadingDots, Skeleton
+  - Data Display: ClearanceBadge, ConfidenceIndicator, DecorativeLine, StatCard, EmptyState
+  - Navigation: Accordion, Tabs, Avatar
+
+  ## Documentation
+
+  - Complete Astro Starlight documentation site
+  - 30+ documentation pages with visual previews
+
 ## 0.2.0
 
 ### Minor Changes

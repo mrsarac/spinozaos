@@ -39,7 +39,7 @@ describe('Select', () => {
 
     it('applies custom className', () => {
       render(<Select options={mockOptions} className="custom-class" />);
-      const container = screen.getByRole('button').closest('.custom-class');
+      const container = screen.getByRole('combobox').closest('.custom-class');
       expect(container).toBeInTheDocument();
     });
   });
@@ -47,57 +47,57 @@ describe('Select', () => {
   describe('Variants', () => {
     it('renders default variant', () => {
       render(<Select options={mockOptions} variant="default" />);
-      expect(screen.getByRole('button')).toHaveClass('bg-void-light');
+      expect(screen.getByRole('combobox')).toHaveClass('bg-void-light');
     });
 
     it('renders ghost variant', () => {
       render(<Select options={mockOptions} variant="ghost" />);
-      expect(screen.getByRole('button')).toHaveClass('bg-transparent');
+      expect(screen.getByRole('combobox')).toHaveClass('bg-transparent');
     });
 
     it('renders glass variant', () => {
       render(<Select options={mockOptions} variant="glass" />);
-      expect(screen.getByRole('button')).toHaveClass('backdrop-blur-md');
+      expect(screen.getByRole('combobox')).toHaveClass('backdrop-blur-md');
     });
   });
 
   describe('Sizes', () => {
     it('renders small size', () => {
       render(<Select options={mockOptions} size="sm" />);
-      expect(screen.getByRole('button')).toHaveClass('h-9');
+      expect(screen.getByRole('combobox')).toHaveClass('h-9');
     });
 
     it('renders medium size (default)', () => {
       render(<Select options={mockOptions} size="md" />);
-      expect(screen.getByRole('button')).toHaveClass('h-10');
+      expect(screen.getByRole('combobox')).toHaveClass('h-10');
     });
 
     it('renders large size', () => {
       render(<Select options={mockOptions} size="lg" />);
-      expect(screen.getByRole('button')).toHaveClass('h-12');
+      expect(screen.getByRole('combobox')).toHaveClass('h-12');
     });
   });
 
   describe('States', () => {
     it('renders default state', () => {
       render(<Select options={mockOptions} state="default" />);
-      const trigger = screen.getByRole('button');
+      const trigger = screen.getByRole('combobox');
       expect(trigger).not.toHaveClass('border-status-error');
     });
 
     it('renders error state', () => {
       render(<Select options={mockOptions} state="error" />);
-      expect(screen.getByRole('button')).toHaveClass('border-status-error/50');
+      expect(screen.getByRole('combobox')).toHaveClass('border-status-error/50');
     });
 
     it('renders success state', () => {
       render(<Select options={mockOptions} state="success" />);
-      expect(screen.getByRole('button')).toHaveClass('border-status-success/50');
+      expect(screen.getByRole('combobox')).toHaveClass('border-status-success/50');
     });
 
     it('can be disabled', () => {
       render(<Select options={mockOptions} disabled />);
-      expect(screen.getByRole('button')).toBeDisabled();
+      expect(screen.getByRole('combobox')).toBeDisabled();
     });
   });
 
@@ -106,7 +106,7 @@ describe('Select', () => {
       const user = userEvent.setup();
       render(<Select options={mockOptions} />);
 
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('combobox'));
 
       await waitFor(() => {
         expect(screen.getByText('Option 1')).toBeInTheDocument();
@@ -119,7 +119,7 @@ describe('Select', () => {
       const user = userEvent.setup();
       render(<Select options={mockOptions} />);
 
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('combobox'));
       await user.click(screen.getByText('Option 1'));
 
       await waitFor(() => {
@@ -131,7 +131,7 @@ describe('Select', () => {
       const user = userEvent.setup();
       render(<Select options={mockOptions} />);
 
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('combobox'));
       expect(screen.getByText('Option 1')).toBeInTheDocument();
 
       await user.keyboard('{Escape}');
@@ -150,8 +150,8 @@ describe('Select', () => {
         </div>
       );
 
-      // Click the select trigger (first button in the select)
-      const selectTrigger = screen.getAllByRole('button')[0];
+      // Click the select trigger (combobox)
+      const selectTrigger = screen.getByRole('combobox');
       await user.click(selectTrigger);
       expect(screen.getByText('Option 1')).toBeInTheDocument();
 
@@ -166,7 +166,7 @@ describe('Select', () => {
       const user = userEvent.setup();
       render(<Select options={mockOptions} disabled />);
 
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('combobox'));
 
       expect(screen.queryByText('Option 1')).not.toBeInTheDocument();
     });
@@ -177,14 +177,14 @@ describe('Select', () => {
       const user = userEvent.setup();
       render(<Select options={mockOptions} />);
 
-      // Get the trigger button (first button)
-      const trigger = screen.getAllByRole('button')[0];
+      // Get the trigger (combobox)
+      const trigger = screen.getByRole('combobox');
       await user.click(trigger);
       await user.click(screen.getByText('Option 2'));
 
       // After selection, dropdown closes, only trigger remains
       await waitFor(() => {
-        expect(screen.getAllByRole('button')[0]).toHaveTextContent('Option 2');
+        expect(screen.getByRole('combobox')).toHaveTextContent('Option 2');
       });
     });
 
@@ -193,7 +193,7 @@ describe('Select', () => {
       const user = userEvent.setup();
       render(<Select options={mockOptions} onChange={handleChange} />);
 
-      const trigger = screen.getAllByRole('button')[0];
+      const trigger = screen.getByRole('combobox');
       await user.click(trigger);
       await user.click(screen.getByText('Option 2'));
 
@@ -202,12 +202,12 @@ describe('Select', () => {
 
     it('shows defaultValue on initial render', () => {
       render(<Select options={mockOptions} defaultValue="option2" />);
-      expect(screen.getByRole('button')).toHaveTextContent('Option 2');
+      expect(screen.getByRole('combobox')).toHaveTextContent('Option 2');
     });
 
     it('respects controlled value', () => {
       render(<Select options={mockOptions} value="option3" />);
-      expect(screen.getByRole('button')).toHaveTextContent('Option 3');
+      expect(screen.getByRole('combobox')).toHaveTextContent('Option 3');
     });
 
     it('does not select disabled options', async () => {
@@ -215,7 +215,7 @@ describe('Select', () => {
       const user = userEvent.setup();
       render(<Select options={mockOptionsWithDisabled} onChange={handleChange} />);
 
-      const trigger = screen.getAllByRole('button')[0];
+      const trigger = screen.getByRole('combobox');
       await user.click(trigger);
       await user.click(screen.getByText('Option 2'));
 
@@ -227,12 +227,12 @@ describe('Select', () => {
       render(<Select options={mockOptions} defaultValue="option2" />);
 
       // Click the select trigger
-      const trigger = document.querySelector('button[type="button"]');
-      await user.click(trigger!);
+      const trigger = screen.getByRole('combobox');
+      await user.click(trigger);
 
-      // Find the selected option button (Option 2)
-      const optionButtons = document.querySelectorAll('[class*="bg-gold"]');
-      expect(optionButtons.length).toBeGreaterThan(0);
+      // Find the selected option (Option 2) - it should have bg-gold/10 class
+      const selectedOption = screen.getByRole('option', { name: 'Option 2' });
+      expect(selectedOption).toHaveAttribute('aria-selected', 'true');
     });
   });
 
@@ -241,9 +241,9 @@ describe('Select', () => {
       const user = userEvent.setup();
       render(<Select options={mockOptionsWithDisabled} />);
 
-      await user.click(screen.getByRole('button'));
+      await user.click(screen.getByRole('combobox'));
 
-      const disabledOption = screen.getByText('Option 2').closest('button');
+      const disabledOption = screen.getByRole('option', { name: 'Option 2' });
       expect(disabledOption).toBeDisabled();
       expect(disabledOption).toHaveClass('cursor-not-allowed');
     });

@@ -1,6 +1,6 @@
 {
   "name": "@spinozaos/motion",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "SpinozaOS motion presets - spring physics, easing curves, and animation variants",
   "author": "Mustafa Sarac <mustafa@mustafasarac.com>",
   "license": "MIT",
@@ -9,16 +9,16 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     }
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean --minify",
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit"
@@ -40,7 +40,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mrsarac/spinozaos.git",
+    "url": "git+https://github.com/mrsarac/spinozaos.git",
     "directory": "packages/motion"
   },
   "keywords": [

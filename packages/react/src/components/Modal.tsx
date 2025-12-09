@@ -57,6 +57,11 @@ const Modal: React.FC<ModalProps> = ({
   closeOnOverlayClick = true,
   closeOnEscape = true,
 }) => {
+  const titleId = React.useId();
+  const descriptionId = React.useId();
+  const modalRef = React.useRef<HTMLDivElement>(null);
+  const previousFocusRef = React.useRef<HTMLElement | null>(null);
+
   // Handle escape key
   React.useEffect(() => {
     if (!closeOnEscape) return;
@@ -83,6 +88,46 @@ const Modal: React.FC<ModalProps> = ({
     };
   }, [isOpen]);
 
+  // Focus trap and focus management
+  React.useEffect(() => {
+    if (isOpen) {
+      // Store the previously focused element
+      previousFocusRef.current = document.activeElement as HTMLElement;
+
+      // Focus the modal or first focusable element
+      const focusableElements = modalRef.current?.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusableElements && focusableElements.length > 0) {
+        focusableElements[0].focus();
+      } else {
+        modalRef.current?.focus();
+      }
+    } else if (previousFocusRef.current) {
+      // Restore focus when modal closes
+      previousFocusRef.current.focus();
+    }
+  }, [isOpen]);
+
+  // Focus trap handler
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key !== 'Tab' || !modalRef.current) return;
+
+    const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (e.shiftKey && document.activeElement === firstElement) {
+      e.preventDefault();
+      lastElement?.focus();
+    } else if (!e.shiftKey && document.activeElement === lastElement) {
+      e.preventDefault();
+      firstElement?.focus();
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -95,10 +140,18 @@ const Modal: React.FC<ModalProps> = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={closeOnOverlayClick ? onClose : undefined}
+            aria-hidden="true"
           />
 
           {/* Content */}
           <motion.div
+            ref={modalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={title ? titleId : undefined}
+            aria-describedby={description ? descriptionId : undefined}
+            tabIndex={-1}
+            onKeyDown={handleKeyDown}
             className={cn(modalContentVariants({ size }))}
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -111,12 +164,12 @@ const Modal: React.FC<ModalProps> = ({
               <div className="flex items-start justify-between p-6 pb-0">
                 <div>
                   {title && (
-                    <h2 className="text-lg font-semibold text-white">
+                    <h2 id={titleId} className="text-lg font-semibold text-white">
                       {title}
                     </h2>
                   )}
                   {description && (
-                    <p className="text-sm text-neutral-400 mt-1">
+                    <p id={descriptionId} className="text-sm text-neutral-400 mt-1">
                       {description}
                     </p>
                   )}
@@ -124,9 +177,10 @@ const Modal: React.FC<ModalProps> = ({
                 {showCloseButton && (
                   <button
                     onClick={onClose}
+                    aria-label="Close modal"
                     className="text-neutral-500 hover:text-white transition-colors p-1 -mr-1 -mt-1"
                   >
-                    <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                     </svg>
                   </button>

@@ -122,10 +122,16 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
 
     const displayIcon = icon ?? DefaultIcons[variant || 'default'];
 
+    // Determine appropriate role based on variant
+    const isUrgent = variant === 'error' || variant === 'warning';
+
     return (
       <motion.div
         className={cn(toastVariants({ variant, className }))}
         ref={ref}
+        role={isUrgent ? 'alert' : 'status'}
+        aria-live={isUrgent ? 'assertive' : 'polite'}
+        aria-atomic="true"
         initial={{ opacity: 0, y: 50, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -133,7 +139,7 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
         {...props}
       >
         {displayIcon && (
-          <div className={iconVariants({ variant })}>
+          <div className={iconVariants({ variant })} aria-hidden="true">
             {displayIcon}
           </div>
         )}
@@ -157,9 +163,10 @@ const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
         {onClose && (
           <button
             onClick={onClose}
+            aria-label="Dismiss notification"
             className="flex-shrink-0 text-neutral-500 hover:text-white transition-colors"
           >
-            <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+            <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
           </button>
