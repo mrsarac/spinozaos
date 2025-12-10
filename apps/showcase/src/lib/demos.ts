@@ -40,11 +40,11 @@ export const demos: Demo[] = [
   {
     id: 'ai-chat',
     title: 'AI Chat Interface',
-    description: 'Conversational UI for AI assistant with real-time streaming and typing indicators.',
+    description: 'ChatGPT-style conversational UI with streaming text, typing indicators, multi-modal attachments, and conversation history.',
     category: 'chat',
-    status: 'coming-soon',
-    href: '/demos/ai-chat',
-    components: ['Input', 'Button', 'Avatar', 'Toast', 'Skeleton', 'LoadingDots'],
+    status: 'live',
+    href: 'http://localhost:3104',
+    components: ['MessageBubble', 'ChatInput', 'TypingIndicator', 'ChatSidebar', 'CodeBlock', 'AttachmentPreview'],
   },
   {
     id: 'landing-page',
