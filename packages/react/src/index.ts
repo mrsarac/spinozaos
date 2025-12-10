@@ -139,6 +139,50 @@ export {
   type NotFoundProps,
 } from './components/EmptyState';
 
+// Components - Data Display (DataGrid)
+export {
+  DataGrid,
+  dataGridVariants,
+  headerCellVariants,
+  cellVariants,
+  rowVariants,
+  formatNumber,
+  formatCurrency,
+  formatPercent,
+  formatDate,
+  type Column,
+  type DataGridProps,
+} from './components/DataGrid';
+
+// Components - Interactive (Terminal)
+export {
+  Terminal,
+  terminalVariants,
+  lineTypeVariants,
+  type TerminalLine,
+  type TerminalProps,
+} from './components/Terminal';
+
+// Components - Data Display (LiveTicker)
+export {
+  LiveTicker,
+  liveTickerVariants,
+  tickerItemVariants,
+  type TickerItem,
+  type LiveTickerProps,
+} from './components/LiveTicker';
+
+// Components - Data Visualization (GaugeCluster)
+export {
+  Gauge,
+  GaugeCluster,
+  gaugeVariants,
+  gaugeClusterVariants,
+  type GaugeConfig,
+  type GaugeProps,
+  type GaugeClusterProps,
+} from './components/GaugeCluster';
+
 // Note: For design tokens, import from '@spinozaos/tokens'
 // For motion presets, import from '@spinozaos/motion'
 // Example:
