@@ -2,7 +2,7 @@ export interface Demo {
   id: string;
   title: string;
   description: string;
-  category: 'dashboard' | 'chat' | 'landing' | 'dataviz' | 'forms' | 'trading';
+  category: 'dashboard' | 'chat' | 'landing' | 'dataviz' | 'forms' | 'trading' | 'monitoring';
   status: 'live' | 'coming-soon' | 'beta';
   href: string;
   components: string[];
@@ -10,6 +10,15 @@ export interface Demo {
 }
 
 export const demos: Demo[] = [
+  {
+    id: 'command-center',
+    title: 'Command Center',
+    description: 'System monitoring dashboard with real-time metrics, service status, log streaming, and alert management.',
+    category: 'monitoring',
+    status: 'live',
+    href: 'http://localhost:3103',
+    components: ['MetricsPanel', 'ServiceGrid', 'LogViewer', 'AlertPanel', 'ProcessList', 'Header'],
+  },
   {
     id: 'trading-terminal',
     title: 'AGI Prediction Markets',
@@ -68,6 +77,7 @@ export const demos: Demo[] = [
 
 export const categories = [
   { id: 'all', label: 'All Demos' },
+  { id: 'monitoring', label: 'Monitoring' },
   { id: 'trading', label: 'Trading' },
   { id: 'dashboard', label: 'Dashboards' },
   { id: 'chat', label: 'Chat UI' },
