@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+body {
+  @apply bg-void text-white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-void-light;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/20 rounded-full hover:bg-white/30;
+}
+
+/* Card variants */
+.analytics-card {
+  @apply bg-void-lighter/50 border border-white/5 rounded-xl backdrop-blur-sm;
+}
+
+.analytics-card-header {
+  @apply flex items-center justify-between p-4 border-b border-white/5;
+}
+
+.analytics-card-body {
+  @apply p-4;
+}
+
+/* Metric card glow */
+.metric-glow {
+  @apply relative;
+}
+
+.metric-glow::after {
+  content: '';
+  @apply absolute -inset-0.5 bg-gradient-to-r from-spinoza-yellow/20 to-transparent rounded-xl opacity-0 transition-opacity duration-300;
+}
+
+.metric-glow:hover::after {
+  @apply opacity-100;
+}
+
+/* Sparkline container */
+.sparkline-container {
+  @apply h-8 w-20;
+}
+
+/* Heatmap cell */
+.heatmap-cell {
+  @apply rounded-sm transition-all duration-200;
+}
+
+.heatmap-cell:hover {
+  @apply ring-1 ring-white/30;
+}
+
+/* Activity feed item */
+.activity-item {
+  @apply flex items-start gap-3 p-3 rounded-lg transition-colors hover:bg-white/5;
+}
+
+/* Funnel bar */
+.funnel-bar {
+  @apply h-8 rounded-r transition-all duration-500;
+}
+
+/* Geographic table row */
+.geo-row {
+  @apply flex items-center gap-4 p-3 rounded-lg transition-colors hover:bg-white/5;
+}
+
+/* Tab styles */
+.analytics-tab {
+  @apply px-4 py-2 text-sm font-medium text-neutral-400 transition-colors rounded-lg;
+}
+
+.analytics-tab:hover {
+  @apply text-white bg-white/5;
+}
+
+.analytics-tab.active {
+  @apply text-spinoza-yellow bg-spinoza-yellow/10;
+}
+
+/* Data grid */
+.data-grid {
+  @apply grid gap-4;
+}
+
+@screen lg {
+  .data-grid-2 {
+    @apply grid-cols-2;
+  }
+  .data-grid-3 {
+    @apply grid-cols-3;
+  }
+  .data-grid-4 {
+    @apply grid-cols-4;
+  }
+}
+
+/* Recharts customization */
+.recharts-tooltip-wrapper {
+  @apply !outline-none;
+}
+
+.recharts-default-tooltip {
+  @apply !bg-void-lighter !border-white/10 !rounded-lg !shadow-xl;
+}
+
+.recharts-tooltip-label {
+  @apply !text-white !font-medium;
+}
+
+.recharts-tooltip-item {
+  @apply !text-neutral-300;
+}
+
+/* Pulse animation for live indicators */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.live-indicator {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Number animation */
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-count {
+  animation: count-up 0.5s ease-out forwards;
+}
+
+/* Loading skeleton */
+.skeleton {
+  @apply relative overflow-hidden bg-void-lighter rounded;
+}
+
+.skeleton::after {
+  content: '';
+  @apply absolute inset-0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
